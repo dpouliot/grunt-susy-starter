@@ -1,0 +1,1189 @@
+/* -------------------------
+   Forms
+------------------------- */
+
+$fieldMaxWidth: 20em;
+$fieldMaxWidth2: 22em;
+$fieldBorderRadius: 3px;
+
+input:not([type=radio]),
+select,
+textarea,
+.read-only
+{
+  font: 16px/1.3 $fontNormal; /* 16px = magic font size number to prevent iOS text zoom */
+  display: inline-block;
+  padding: .5em;
+  vertical-align: top;
+  margin-top: 2px;
+  border-radius: $fieldBorderRadius;
+  border: 1px solid $borderColorDark;
+  height: 40px;
+
+  @include placeholder {
+    font-weight: normal;
+    color: $textColorInactive;
+  }
+}
+
+input[type=radio]{
+  /*IE10 requires specifying each corner 8px. */
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+  border-bottom-left-radius:8px;
+  border-bottom-right-radius:8px;
+}
+
+.read-only {
+  border-color: transparent;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  @include focus;
+  border-color: $libertyBlue;
+}
+
+input,
+select,
+textarea
+{
+  width: 100%;
+}
+
+
+.field .politespace-proxy
+{
+  max-width: 100%;
+}
+
+.field,
+.fieldInput {
+  position: relative;
+  padding: 3px;
+}
+.label + .field,
+.fieldLabel + .fieldInput {
+  display: block;
+  width: 100%;
+}
+.label + .field {
+  max-width: $fieldMaxWidth;
+}
+.check-radio .label + .field {
+  max-width: none;
+}
+
+/* exceptions for check & radio inputs */
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+  padding: 0;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+  margin-top: 0;
+  margin-bottom: 2px;
+  margin-right: .5em;
+}
+
+input[type="radio"]:focus {
+  border-radius: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance:textfield;
+}
+input[type=number]::-ms-clear {
+  display: none;
+}
+
+.textinput,
+.textvalue, /* for read-only feedback */
+.select,
+.check-radio,
+.radio,
+.checkbox,
+.paymentAccountSection .field {
+  width: 100%;
+  display: block;
+  @extend %clearfix;
+}
+/* margin should be consistent across all of these elements: */
+.textinput,
+.textvalue,
+.select,
+.check-radio,
+.stacked input,
+.stacked select,
+.stacked textarea,
+.stacked .read-only,
+.paymentAccountSection .field {
+  margin: 0 0 $verticalSpace*.75;
+}
+.check-radio + .check-radio {
+  margin-top: $verticalSpace*1.75;
+}
+.radio:last-child,
+.checkbox:last-child {
+  margin-bottom: 0;
+}
+.radio,
+.checkbox,
+.group .radio:last-child, /* keep the margin in case the group is stacked at some bps */
+.group .checkbox:last-child {
+  margin: 0 0 $verticalSpace/2;
+}
+.inline .radio,
+.inline .checkbox {
+  display: inline-block;
+  width: auto;
+  margin-right: 2em;
+  margin-bottom: 0;
+  position: relative;
+}
+/* .button applies the tabbed radio set behavior */
+.inline.button {
+  overflow: hidden;
+}
+.inline.button .radio {
+  margin-right: 0;
+  white-space: nowrap;
+  float: left;
+}
+.inline.button .radio .opt {
+  vertical-align: baseline;
+}
+.inline.button .radio input {
+  opacity: 0.0001;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.inline.button .btn {
+  border-radius: 0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.inline.button .btn:not(.foo) {
+  border-radius: 4px;
+}
+.inline.button .btn:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: -1px;
+}
+.inline.button .btn:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.inline.button .btn {
+  z-index: 1;
+}
+.inline.button .btn-action {
+  z-index: 2;
+}
+
+/* Prefix/Suffix - like currency and units of measure */
+.field-currency,
+.field-unit {
+  height: 40px;
+  line-height: 40px;
+}
+.field-currency {
+  font-size: $size16;
+  float: left;
+  margin-right: 0.5em;
+}
+/* Field icons, like security badges and helper images */
+.field-icons {
+  display: block;
+  margin: 1em 0 0;
+}
+
+// Limit input lengths to match a certain number of characters (2-12)
+.char-2 { width: 2.75em; }
+.char-4 { width: 4.5em; }
+select.char-4 { width: 5em; } // allow more room for browser-styled arrow on right
+.char-7 { width: 6.25em; }
+.char-9 { width: 7.25em; }
+.char-10 { width: 8em; }
+.char-12 { width: 9.25em; }
+.char-16 { width: 12.25em; }
+.char-17 { width: 12.75em; }
+
+.field-unit {
+  position: absolute;
+  top: 0;
+  font-size: $size12;
+}
+.char-2 + .field-unit   { left: 4.5em; }
+.char-4 + .field-unit   { left: 7em; }
+select.char-4 + .field-unit   { left: 7.5em; }
+.char-7 + .field-unit   { left: 9.333em; }
+.char-10 + .field-unit  { left: 11.6667em; }
+.char-12 + .field-unit  { left: 13.333em; }
+.char-16 + .field-unit  { left: 17.333em; }
+
+
+// Masked inputs
+.mask-value .read-only {
+  display: inline;
+}
+
+
+// Labels and check & radio options
+.label,
+.fieldLabel {
+  display: block;
+  margin: 0 0 2px;
+  padding-left: 3px; /* align with input/select/textarea */
+  line-height: 1.1;
+}
+.label-text,
+.fieldLabelText,
+ span.fieldLabelText{
+  @include custom-bold;
+  display: inline-block;
+  position: relative;
+  padding-right: 1.7em;
+  min-height: 1.3em; /* prop open for help icon, just in case */
+}
+.label-text .icon-help {
+  width: 1.2em;
+  height: 1.3em;
+  background-size: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.label-instruct,
+.label-optional,
+.fieldLabelHelp {
+  display: block;
+  font-size: $size11;
+}
+.label-instruct,
+.fieldLabelHelp {
+  margin: 0 0 .4em;
+  color: $textColorLight;
+}
+.label-optional {
+  color: $headingColor;
+  text-transform: uppercase;
+}
+
+.check-radio .label {
+  margin-bottom: 1em;
+}
+.label-text,
+.radio .opt,
+.checkbox .opt,
+.fieldLabelText,
+span.fieldLabelText //pci mini app
+{
+  font-size: $size14;
+}
+.radio .opt-desc,
+.checkbox .opt-desc {
+  font-size: .857142em; // 12/14
+  color: $textColorLight;
+}
+.radio .opt-desc:before,
+.checkbox .opt-desc:before {
+  content: " - ";
+}
+.radio .opt,
+.checkbox .opt{
+  display: inline-block;
+  font: 16px/1.3 $fontNormal; //so radio/check labels match their input fields
+  max-width: 80%; // avoid wrapping under input at smallest points
+  margin: 0;
+  vertical-align: top;
+  line-height: 1.2;
+}
+.radio .opt .val,
+.checkbox .opt .val {
+  white-space: nowrap;
+  font-size: .857142em; /* 12/14 */
+  color: $textColorLight;
+  display: block;
+  margin: 0 0 .2em;
+}
+.opt .val b {
+  color: #222;
+  font-size: 1.333333em; /* 16/12 */
+}
+
+// "other" input. set not radio to have greater specificity than line 9. see interview-driver> relationship to driver> other
+.opt-other:not([type=radio]) {
+  display: inline-block;
+  height: 30px;
+  padding: .3em .5em;
+  max-width: 50%;
+  vertical-align: top;
+  margin: -.3em 0 -.3em .5em;
+}
+
+/* read only */
+.checkbox.check-read-only .icon {
+  width: 16px;
+  height: 16px;
+  background-size: 100%;
+  margin: .1em .4em 0 .2em;
+  vertical-align: top;
+}
+.opt-included {
+  @include custom-bold;
+  color: $libertyGreen;
+}
+
+/* with thumbnail / thumbnail-icons */
+.thumbnails input[type="checkbox"],
+.thumbnails input[type="radio"],
+.thumbnails img,
+.thumbnails img + .opt {
+  vertical-align: top;
+}
+.thumbnails input[type="checkbox"],
+.thumbnails input[type="radio"] {
+  margin-top: .55em;
+}
+.thumbnails .radio,
+.thumbnails .checkbox {
+  margin: 0 0 $verticalSpace*.75;
+}
+.thumbnails .radio .opt,
+.thumbnails .checkbox .opt {
+  line-height: 1.1;
+  max-width: 60%;
+  margin-left: .5em;
+}
+.thumbnails img {
+  border: 2px solid $borderColor;
+  @include box-sizing(content-box);
+}
+/* checked image has border */
+.thumbnails input:checked + img {
+  border: 3px solid $linkColorHover;
+  margin: -1px; /* offset additional 1px border so thumbnails don't "jump" */
+}
+/* when descriptions are hidden */
+.hide-desc .opt-desc {
+  display: none;
+}
+.hide-desc .thumbnails img,
+.hide-desc .thumbnails img + .opt {
+  vertical-align: middle;
+}
+
+/* Thumbnail icons */
+.thumbnail-icons input[type="checkbox"],
+.thumbnail-icons input[type="radio"],
+.thumbnail-icons .icon,
+.thumbnail-icons .radio .opt,
+.thumbnail-icons .checkbox .opt {
+  vertical-align: middle;
+}
+.thumbnail-icons .icon {
+  display: inline-block;
+  background-color: $linkColor;
+  width: 40px;
+  height: 35px;
+  background-size: 65%;
+  background-position: center center;
+}
+.thumbnail-icons input[type="checkbox"],
+.thumbnail-icons input[type="radio"] {
+  margin-top: 0;
+  margin-right: .3em;
+}
+.thumbnail-icons .radio .opt,
+.thumbnail-icons .checkbox .opt  {
+  max-width: 63%;
+}
+.field .thumbnail-icons .icon {
+  @include round-icon;
+  border: 1px solid $borderColor;
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+.field .thumbnail-icons [class*="icon-motorcycle"] {
+  background-size: 75%;
+}
+.field .thumbnail-icons input:checked + .icon {
+  background-color: $libertyBlue;
+  border-color: $libertyBlue;
+}
+.field .thumbnail-icons .opt-desc {
+  color: $textColor;
+  font-size: .9em;
+  display: block;
+  margin-top: .2em;
+}
+.field .thumbnail-icons .opt-desc:before {
+  display: none;
+}
+
+
+/* Image picker */
+.img-picker-feedback {
+  position: relative;
+}
+.img-picker-feedback .resource-edit {
+  position: absolute;
+  top: $verticalSpace*.75; /* match form-question top padding */
+  right: 0;
+  min-height: 0;
+  line-height: 1.2;
+}
+.mini-thumbnail {
+  display: block;
+  margin: .3em 0 .4em;
+  max-width: 15em;
+  @extend %clearfix;
+}
+.img-picker-feedback .mini-thumbnail {
+  font-size: $size13;
+}
+.mini-thumbnail:last-child {
+  margin-bottom: 0;
+}
+.mini-thumbnail img {
+  margin-right: .3em;
+  vertical-align: top;
+  width: 20px;
+  height: 16px;
+  background-color: $fillColorLight;
+}
+.mini-thumbnail .thumbnail-label {
+  display: inline-block;
+  width: 10em;
+}
+.mini-thumbnail .thumbnail-pct {
+  float: right;
+}
+
+.img-picker-header {
+  @extend %clearfix;
+  padding: 0 0 .5em;
+}
+.img-picker-instruct {
+  font-size: $size16;
+  font-weight: normal;
+  margin: 0;
+  padding-left: 3px;
+}
+.img-picker-toggle {
+  float: right;
+  margin: .5em 0 0;
+  font-size: $size12;
+  padding-left: 23px;
+}
+.picker-tally,
+.img-picker-footer {
+  color: $textColorLight;
+}
+.picker-tally {
+  font-size: .9em;
+  white-space: nowrap;
+}
+.picker-count:empty,
+.picker-total:empty {
+  position: absolute;
+  left: -999px;
+  width: 1px;
+  overflow: hidden;
+}
+.img-picker-header .picker-count:before {
+  content: "(";
+}
+.img-picker-header .picker-count:after {
+  content: " of ";
+}
+.img-picker-header .picker-total:after {
+  content: " selected)";
+}
+.img-picker-footer {
+  padding: .7em 0;
+  border-top: 1px dotted $borderColor;
+}
+.img-picker-footer .picker-count:after {
+  content: " Selected,";
+}
+
+/* Img picker % calculator */
+.img-picker-calc,
+.img-picker-calc-footer {
+  max-width: 400px;
+}
+.img-picker-calc-pct {
+  @extend %clearfix;
+  position: relative;
+  padding: $verticalSpace/2 0;
+  padding-right: 25px; /* hold space for delete btn */
+  overflow: hidden;
+}
+.img-picker-calc-pct .resource-actions {
+  position: absolute;
+  top: $verticalSpace/2;
+  right: 0;
+  height: 38px;
+  line-height: 38px;
+}
+.img-picker-calc-pct .resource-delete span {
+  @include a11y-only;
+}
+.img-picker-calc-pct .thumbnail,
+.img-picker-calc-pct .thumbnail-label,
+.img-picker-calc-pct .thumbnail img {
+  float: left;
+}
+.img-picker-calc-pct .thumbnail {
+  width: 70%;
+  margin-top: .2em;
+}
+.img-picker-calc-pct .thumbnail-label {
+  font-size: $size14;
+  max-width: 65%;
+  margin: .3em 0 0 .5em;
+}
+.img-picker-calc-pct .calcinput {
+  position: relative;
+  display: inline-block;
+}
+.img-picker-calc-footer {
+  border-top: 1px solid $borderColor;
+  padding: $verticalSpace/2 25px 0 0;
+}
+.img-picker-calc-total {
+  @extend %clearfix;
+  padding-bottom: $verticalSpace/2;
+}
+.img-picker-calc-total-title {
+  font-size: $size14;
+  float: left;
+  margin: 0;
+  width: 72%;
+  text-transform: uppercase;
+}
+.img-picker-calc-total-value {
+  font-size: $size16;
+  float: left;
+  max-width: 25%;
+  color: $textColorInactive;
+}
+.img-picker-calc-total-value.calc-complete {
+  color: $libertyGreenDark;
+}
+.img-picker-calc-total-value.calc-incomplete {
+  color: $libertyRedDark;
+}
+
+//Image Picker Top 5
+.img-picker-set .radio{
+  @include anim-reveal;
+  margin-bottom:15px;
+}
+
+.img-picker-set.collapsed .radio{
+  @include anim-reveal-content;
+  margin-bottom:0;
+}
+
+.img-picker-set.collapsed .radio.prominent-item{
+  @include anim-reveal;
+  margin-bottom:15px;
+}
+
+.img-picker-set .show-all-link{display: inline-block}
+
+// Messaging & states
+.field-mssg {
+  display: inline-block;
+  color: $textColorLight;
+  padding: .6em 0 0;
+  min-height: 30px; /* prop open for icon */
+}
+.group .field-mssg {
+  clear: both;
+}
+.checkbox + .field-mssg {
+  position: relative;
+  top: -1em;
+}
+.check-radio-set + .field-mssg {
+  margin-top: .5em;
+}
+.field-mssg p {
+  margin: 0;
+  font-size: $size12;
+}
+.field-mssg[class*="icon-"] {
+  background-position: left .6em;
+  background-size: 18px;
+  padding-left: 26px;
+}
+.field-mssg .plm-percent {
+  color: $libertyGreen;
+}
+.field-mssg b {
+  font-size: 1.18em; /* 13/11 */
+}
+
+.field-mssg-invalid {
+  display: block;
+  font-size: $size12;
+  margin: 0 0 .5em;
+  color: $libertyRedDark;
+  font-weight: bold;
+}
+
+.check-radio .field-mssg-invalid {
+  margin: 0 0 1em;/* removed -1em from top margin, caused error to be clipped on qps-renter-edit-pp-invalid.html */
+}
+
+.invalid input:not([type=radio]),
+.invalid select,
+.invalid textarea,
+.invalid .check-radio-set,
+.invalid .checkbox {
+  border-left: 4px solid $libertyRed;
+}
+.warning input,
+.warning select,
+.warning textarea,
+.warning .check-radio-set,
+.warning .checkbox {
+  border-left: 4px solid $libertyYellow;
+}
+.invalid .check-radio-set,
+.invalid .checkbox,
+.warning .check-radio-set,
+.warning .checkbox  {
+  padding-left: 10px;
+}
+// avoid duplicate styles on container + checkboxes
+.invalid .check-radio-set .checkbox,
+.warning .check-radio-set .checkbox {
+  border: 0;
+  padding-left: 0;
+}
+
+// undo browser styles for invalid fields
+input:invalid {
+  box-shadow: none;
+}
+
+//some errors may contain additional explanatory text under the field
+//e.g. Vehicle Details page
+.invalid p{
+  font-size:.75em;
+  margin: .5em 0;
+}
+.invalid b{display: block}
+
+// disabled state
+.disabled.textinput,
+.disabled.select,
+.disabled.check-radio,
+.disabled.checkbox {
+  opacity: .4;
+}
+
+
+/* FAQs grouped with form elements */
+.form-faqs .collapsible-header {
+  @extend %collapsible-item-title;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.form-faqs .collapsible-content {
+  @extend %collapsible-item-content;
+}
+.form-faqs .collapsible-content p {
+  margin: .5em 0 1em;
+}
+
+/* Mini Form */
+.mini-form {
+  border-top: 1px dotted $borderColor;
+  border-bottom: 1px dotted $borderColor;
+}
+
+.mini-form .form-question {
+  padding-top: 5px
+}
+
+.mini-form .textinput {
+  margin-bottom: 5px;
+}
+
+.mini-form .label-text {
+  padding-right: 0
+}
+
+.mini-form .label-instruct {
+  display: inline-block
+}
+
+.mini-form .form-submit {
+  border-top: none;
+  padding: 0;
+  /* text-align: right;*/
+}
+/* Grouping elements */
+.form-wrapper {
+  margin-top: 0px;
+}
+.form-group,
+.form-question,
+.form-feedback,
+.form-submit {
+  @extend %clearfix;
+}
+.form-group,
+.form-question {
+  margin-top: -1px;
+}
+.form-group {
+  border-top: 1px solid $borderColor;
+  /* required for disclosure animation to work: */
+  background-color: $contentFill;
+  overflow: hidden;
+}
+
+form .form-submit {//scoping selector to forms allows submit buttons not in a form to lack a divider line
+  border-top: 1px solid $borderColor;
+}
+.form-mssg {
+  margin: 0;
+  max-width: none;
+  padding: $verticalSpace*.75 0;
+}
+
+.form-mssg-alt p > b,
+.form-mssg-alt p > strong {
+  display: block;
+}
+
+.resource-header + .form-group {
+  margin-top: -1em;
+}
+
+.form-title {
+  border-top: 1px solid $borderColor;
+  margin: 0 0 1em;
+  padding-top: .8em;
+  font-size: $size16;
+  @include custom-bold;
+}
+.form-title.form-title-loading {
+  background: url(/assets/img/ajax-loader.gif) no-repeat 0 .8em;
+  background-size: 20px 20px;
+  padding-left: 30px;
+}
+.form-subtitle {
+  color: $textColorLight;
+}
+.form-title + .form-subtitle,
+.form-title + p {
+  margin-top: -1em;
+}
+.resource-list + .form-title,
+.resources + .form-title{
+  padding-top: 1.2em;
+}
+
+.form-question,
+.form-feedback {
+  padding-top: $verticalSpace*.75;
+  border-top: 1px dotted $borderColor;
+}
+.form-title:first-child,
+.form-question:first-child,
+.form-feedback:first-child {
+  border-top: 0;
+}
+.form-title + .form-question,
+.form-title + .form-feedback {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.form-wrapper,
+.form-question,
+.form-group {
+  /* required for disclosure animation to work: */
+  background-color: $contentFill;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  clear:both;/* payment simplified, after due today */
+}
+
+/* progressive disclosure questions */
+.form-question.disclosure,
+.form-group.disclosure {
+  border-bottom: 1px solid $borderColor;
+  padding-bottom: $verticalSpace*.25;
+  @include anim-reveal;
+  @include custom-shadow;
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: block;
+    width: 100%;
+    height: 15px;
+    background: url(/assets/img/bg-disclosure.png) no-repeat center top;
+  }
+  &:after {
+    bottom: 0;
+  }
+  position: relative;
+  z-index: 1;
+  margin-bottom: -1px; /* avoid overlapping borders */
+}
+
+.form-question.disclosure {
+  border-top-width: 0;
+  margin-top: 0;
+}
+.disclosure:not(.hidden) + .form-question,
+.disclosure:not(.hidden) + .disclosure.hidden + .form-question {
+  border-top-style: solid;
+}
+.form-question.disclosure > .textinput:first-child,
+.form-question.disclosure > .textvalue:first-child,
+.form-question.disclosure > .select:first-child,
+.form-question.disclosure > .check-radio:first-child {
+  padding-top: $verticalSpace/4;
+}
+.disclosure {
+  @include anim-reveal;
+  padding-top: $verticalSpace;
+
+  .form-question.disclosure {
+    border-top-width: 1px;
+    padding-top: $verticalSpace*.75;
+  }
+
+  .form-question.disclosure > .textinput:first-child,
+  .form-question.disclosure > .textvalue:first-child,
+  .form-question.disclosure > .select:first-child,
+  .form-question.disclosure > .check-radio:first-child {
+    padding-top: 0;
+  }
+}
+.disclosure.hidden,
+.form-question.disclosure.hidden,
+.form-group.disclosure.hidden {
+  display: block;
+  @include anim-reveal-content;
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+.disclosure .disclosure {
+  border-bottom: 0;
+}
+.disclosure .form-question.disclosure:before,
+.disclosure .form-group.disclosure:before,
+.disclosure .form-question.disclosure:after,
+.disclosure .form-group.disclosure:after  {
+  display: none;
+}
+.form-question .form-title:first-child,
+.form-feedback .form-title:first-child,
+.disclosure > .form-question:first-child,
+.disclosure > .form-title:first-child {
+  padding-top: 0;
+}
+
+/* Masked inputs */
+.form-mask-toggle {
+  color: $textColorLight;
+  padding-top: $verticalSpace/4;
+}
+
+/* submit btns */
+.form-submit {
+  margin: 0 0 1em;
+  padding: $verticalSpace 0 0;
+  text-align: right;
+}
+.form-submit .btn:last-child {
+  float: left;
+}
+
+.form-submit .btn-primary:first-child {
+  float:right;
+ }
+
+
+.form-submit p + .btn:last-child {
+  float: none;
+}
+.form-submit + .form-submit {
+  margin-top: -1em;
+  padding-top: $verticalSpace*1.25;
+}
+.form-submit > p {
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+}
+.form-submit p + .btn {
+  margin-left: .5em;
+}
+
+.form-submit-alt {
+  display:inline-block;
+  float: left;
+  text-align: left;
+  margin: 0;
+  padding-right: 1em;
+}
+
+.form-submit-alt *{
+  @include custom-bold;
+  margin: 0;
+  padding: 0;
+}
+
+/* Back/next buttons on interview forms
+.interview .form-submit {
+  border-bottom: 1px solid $borderColor;
+} */
+
+
+/* Recalc loading mssg */
+.recalc-mssg {
+  background: url(/assets/img/ajax-loader.gif) no-repeat 0 0;
+  background-size: 14px;
+  padding-left: 20px;
+  font-size: $size12;
+  color: $textColorLight;
+  display: inline-block;
+}
+
+
+/* ----- Max width queries */
+@media (max-width: 22.5em) {
+  .form-submit > p {
+    text-align: left;
+  }
+  .form-submit .btn,
+  .form-submit p + .btn {
+    width: 100%;
+    margin: 0 0 .5em;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .form-submit-alt {
+    padding: 0;
+  }
+}
+
+@media ( max-width: 25em ) {
+  .form-submit .btn-lrg {
+    font-size: $size17;
+    line-height: 2.3;
+    height: 40px;
+  }
+  .img-picker-calc-pct .thumbnail-label {
+    font-size: $size13;
+  }
+}
+
+/* ----- Min width queries */
+@media ( min-width: 22.5em ) {
+  .radio .opt .val,
+  .checkbox .opt .val {
+    display: inline-block;
+  }
+  .radio .opt .val:before,
+  .checkbox .opt .val:before {
+    content: "|";
+    margin: .2em .4em 0 .2em;
+    vertical-align: top;
+    display: inline-block;
+  }
+  .radio .opt .val:first-child:before,
+  .checkbox .opt .val:first-child:before {
+    display: none;
+  }
+  .thumbnails .radio .opt,
+  .thumbnails .checkbox .opt {
+    max-width: 70%;
+  }
+
+  .img-picker-instruct {
+    float: left;
+    width: 55%;
+  }
+  .img-picker-toggle {
+    margin-top: .3em;
+  }
+  .form-submit-alt {
+    width: 47%;
+  }
+}
+
+@media ( min-width: 25em ) {
+  .img-picker-calc-total {
+    float: right;
+    width: 44%;
+  }
+  .img-picker-calc-total-title,
+  .img-picker-calc-total-value {
+    float: none;
+    width: auto;
+  }
+  .img-picker-calc-total-value {
+    display: inline-block;
+    min-width: 3em;
+    text-align: center;
+  }
+  .img-picker-calc-total-title {
+    display: inline-block;
+    margin-right: .2em;
+  }
+  .img-picker-calc-footer .btn {
+    float: left;
+  }
+}
+
+@media ( min-width: 29em ) {
+  .form-submit > p,
+  .form-submit p + .btn {
+    width: auto;
+  }
+  .img-picker-instruct {
+    width: 68%;
+  }
+  .form-submit-alt {
+    width: 52%;
+  }
+}
+
+@media ( min-width: 32em ) {
+  .form-faqs .collapsible-header {
+    @include collapsible-item-title-lrg;
+  }
+}
+
+@media ( min-width: 35em ) {
+  .form-submit-alt {
+    width: 59%;
+  }
+}
+
+/* Elements in the CC iframe listen to the iframe's width, no the viewport width */
+@media (min-width: 30.3125em) {
+  .fieldLabel,
+  .fieldLabel + .fieldInput {
+    float: left;
+  }
+  .fieldLabel + .fieldInput {
+    width: 60%;
+    max-width: none;
+  }
+  .fieldLabel {
+    width: 40%;
+    padding-right: 1em;
+    margin-bottom: 0;
+  }
+}
+
+@media ( min-width: 37.5em ) {
+  .label,
+  .label + .field {
+    float: left;
+  }
+  .label + .field {
+    width: 60%;
+    max-width: none;
+  }
+  .label {
+    width: 40%;
+    padding-right: 1em;
+    margin-bottom: 0;
+  }
+  .form-mask-toggle {
+    margin-left: 40%;
+  }
+  .check-radio .label,
+  .check-radio .label-instruct {
+    margin-bottom: 0;
+  }
+
+  .field-currency {
+    margin-right: 0;
+    margin-left: -1.5em;
+    width: 1.5em;
+  }
+
+  .form-submit > p {
+    font-size: $size18;
+  }
+
+  .form-submit-alt > p {
+    font-size: $size17;
+  }
+
+  .check-radio .field-mssg-invalid {
+    margin-top: 0;
+  }
+
+}
+
+@media ( min-width: 50em ) {
+  .label,
+  .radio .opt,
+  .checkbox .opt
+  {
+    font-size: $size16;
+  }
+  .radio .opt .val,
+  .checkbox .opt .val {
+    font-size: $size12;
+  }
+  .radio .opt,
+  .checkbox .opt {
+    max-width: 85%;
+  }
+  .radio .opt-desc,
+  .checkbox .opt-desc {
+    font-size: $size12;
+  }
+  .radio .opt-desc .pg-mssg-positive,
+  .checkbox .opt-desc .pg-mssg-positive
+  {
+    font-size: 1rem;//using ems here (via $size16) causes unintended consequences here due to cascading
+  }
+
+  .label-instruct,
+  .label-optional,
+  .fieldLabelHelp {
+    display: block;
+    font-size: $size12;
+  }
+  .form-submit-alt {
+    width: 68%;
+  }
+
+}

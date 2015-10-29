@@ -1,0 +1,80 @@
+/* -------------------------
+   Classes for hiding individual elements
+------------------------- */
+
+.btn.hidden,
+.check-radio.hidden,
+.checkbox.hidden,
+.form-group.hidden,
+.form-question.hidden,
+.form-submit-alt.hidden,
+.group.hidden,
+.opt-other.hidden, // "Other" input field next to checkbox/radio
+.pay-frequency iframe.hidden,
+.pg-mssg.hidden,
+.radio.hidden,
+.reject .masthead .icon-help-center, // Reject EHPs
+.reject .masthead-nav,
+.resource-add.hidden, // Add resource link
+.resource-delete.hidden, // Delete icon/button
+.resource-list-footer.hidden,
+.resources-footer.hidden,
+.sales-contact.hidden,
+.select.hidden,
+.textinput.hidden,
+.textvalue.hidden
+{
+	display: none;
+}
+
+// Masked inputs
+.mask-value.hidden,
+.mask-input.hidden {
+	display: none !important;
+}
+
+// Button under recalculating state is still in the document flow (dislpay: inline-block)
+.recalc .btn.btn-action.hidden,
+.recalc .btn.btn-action-b.hidden {
+	display: inline-block;
+	pointer-events: none;
+	border-width: 0;
+	line-height: 0;
+	visibility: hidden;
+	padding: 0;
+}
+
+// Conditionally shown edit coverages buttons (only appear when user changes coverage)
+.edit-coverage + .form-submit .btn.btn-primary.hidden {
+	display: inline-block;
+	@include anim-fade-out;
+}
+
+/* Resources (vehicles, drivers, etc) */
+.resource.hidden,
+.resource-list .resource.hidden,
+.resources .resource.hidden{
+	@include anim-reveal-content;
+	border: none;
+}
+
+/* Remove confirmation blocks */
+.resource-edit-confirm.hidden {	
+	@include anim-slide-left-content;
+}
+
+
+
+/* 
+Replaced with `hidden` class:
+edit-qps-hidden
+btn-hidden
+resource-delete-hidden
+resource-hidden
+resource-confirm-hidden
+opt-other-hidden
+related-hidden
+mask-hidden
+disclosure-hidden
+
+*/

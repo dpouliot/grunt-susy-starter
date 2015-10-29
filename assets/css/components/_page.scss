@@ -1,0 +1,95 @@
+/* -------------------------
+   Outer Page Containers
+------------------------- */
+// verticalSpace = 20px. used in many locations. use a multiplier here to reduce masthead
+$sideSpace: 30px; // mobile left/right
+$sideSpace2: 50px; // intermediate width margin
+$sideSpace3: 80px; // max page width margin
+$sideSpace4: 130px; // max page width padding
+
+.page {
+	overflow: hidden;
+	position: relative;
+	min-height: 100%;
+	margin: 0 auto;
+	max-width: $pageMaxWidth;
+	border-top: 5px solid $libertyYellow;
+}
+
+.masthead {
+  margin: 7px $sideSpace/2 4px;
+}
+.masthead-nav, 
+.footer {
+	padding: 0 $sideSpace/2;
+}
+.footer {
+	padding-top: $verticalSpace;
+	padding-bottom: $verticalSpace;
+}
+.content {
+	padding: $verticalSpace $sideSpace/2;
+	min-height: 420px;
+	background-color: $contentFill;
+	border-bottom: 1px solid $borderColor;
+	z-index: 3;
+	@include custom-shadow;
+}
+
+@media ( min-width: 30em ) { /* 480px*/
+	.masthead {
+		margin: $verticalSpace $sideSpace;
+	}
+	.masthead-nav,
+	.content, 
+	.footer {
+		padding-left: $sideSpace;
+		padding-right: $sideSpace;
+	}
+}
+
+@media ( min-width: 37.5em ) {
+	.masthead {
+		margin: $verticalSpace $sideSpace2 - 4;
+	}
+	.masthead-nav,
+	.content, 
+	.footer {
+		padding-left: $sideSpace2;
+		padding-right: $sideSpace2;
+	}
+	.content {
+		padding-top: $verticalSpace*2;
+	}
+}
+ 
+@media ( min-width: 50em ) {
+	.masthead {
+		margin-left: $sideSpace3 - $sideSpace2 + 4;
+		margin-right: $sideSpace3 - $sideSpace2;
+	}
+	.masthead-nav,
+	.content, 
+	.footer {
+		padding-left: $sideSpace3;
+		padding-right: $sideSpace3;
+	}
+	.footer {
+		padding-top: $verticalSpace+10;
+		padding-bottom: $verticalSpace+10;
+	}
+}
+
+@media ( min-width: $pageMaxWidth ) {
+	.masthead {
+		margin-left: $sideSpace3 + 4;
+		margin-right: $sideSpace3;
+		margin-bottom: $verticalSpace*1.5;
+	}
+	.masthead-nav,
+	.content, 
+	.footer {
+		padding-left: $sideSpace4;
+		padding-right: $sideSpace4;
+	}
+}

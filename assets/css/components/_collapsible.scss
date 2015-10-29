@@ -1,0 +1,58 @@
+/* -------------------------
+   Collapsible (show/hide content)
+------------------------- */
+.collapsible {
+	overflow-y: hidden;
+	overflow-x: visible;
+}
+.collapsible>.collapsible-content {
+	@include anim-reveal;
+	position: relative;
+	z-index: 1;
+	transform: translateZ(0);
+}
+.collapsible-collapsed>.collapsible-content {
+	@include anim-reveal-content;
+	margin-bottom: 0;
+}
+.collapsible-header {
+	@extend %collapsible-item-header;
+	background-color: transparent;
+}
+.collapsible-header:focus,
+.collapsible-header:hover {
+	color: $linkColorHover;
+}
+.collapsible-header .icon-arrow-solid-right {
+	@extend %collapsible-icon;
+	-webkit-transition: .1s -webkit-transform ease-out;
+	transition: .1s transform ease-out;
+	-webkit-transform-origin: 28% 46%;
+	transform-origin: 28% 46%;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+.collapsible-collapsed .collapsible-header .icon-arrow-solid-right {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.collapsible-header .count {
+	background: rgba(27, 117, 187, .7); 
+	margin-top: -.2em;
+	margin-left: .4em;
+}
+
+/* Expand all - add this class to the container around the set you want to expand */
+.collapsible-expand-all .collapsible,
+.collapsible-expand-all .collapsible.collapsible-collapsed {
+	@include uncollapse;
+}
+
+/* Grouped into a list */
+.collapsible-group .collapsible {
+	margin: $verticalSpace/2 0;
+}
+
+.collapsible-group .collapsible-header .icon-arrow-solid-right {
+	top: 0;
+}

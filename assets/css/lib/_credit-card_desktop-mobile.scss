@@ -1,0 +1,189 @@
+.desktop{
+  .pmtAcctMiniApp .fieldLabel {
+    width: 255px;
+    margin-top: 5px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+
+  .pmtAcctMiniApp .fieldInput {
+    width: 275px;
+    margin-left: 26px;
+    margin-right: 25px;
+    margin-top: 5px;
+  }
+
+  .pmtAcctMiniApp .fieldInput .dijitValidationContainer {
+    display: none;
+  }
+
+  .pmtAcctMiniApp .cardNumberInput {
+    margin-right: 110px;
+    margin-bottom: 3px;
+  }
+
+  .pmtAcctMiniApp .field {
+    border-bottom: 1px solid #ececec;
+  }
+
+  .pmtAcctMiniApp .fieldLabelText {
+    height: 18px;
+  }
+
+  .pmtAcctMiniApp .fieldInputError {
+    color: #9E000E;
+    font-size: 9px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .pmtAcctMiniApp .fieldLabelTextError::before {
+    content: url('https://public.libertymutual.com/CFIENMediaBin/PersonalMarket/NextGen/Common/Error_Icon.png');
+    margin-right: 4px;
+    position: relative;
+    vertical-alignment: bottom;
+  }
+
+  .pmtAcctMiniApp .fieldLabelTextError {
+    color: #9e000e;
+    font-weight: bold;
+  }
+}
+
+.desktop.claro{
+  .dijitTextBox,
+  .dijitTextBox .dijitButtonNode {
+    -webkit-transition-duration: 0.35s;
+    -moz-transition-duration: 0.35s;
+    -o-transition-duration: 0.35s;
+    transition-duration: 0.35s;
+    -webkit-transition-property: background-color, border;
+    -moz-transition-property: background-color, border;
+    -o-transition-property: background-color, border;
+    transition-property: background-color, border;
+    border-color: #B5BCC7;
+  }
+
+  .dijitTextBoxHover,
+  .dijitTextBoxHover .dijitButtonNode {
+    -webkit-transition-duration: 0.25s;
+    -moz-transition-duration: 0.25s;
+    -o-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    border-color: #648e42;
+    background-color: #bacca6;
+    color: white;
+  }
+
+  .dijitTextBoxFocused,
+  .dijitTextBoxFocused .dijitButtonNode {
+    -webkit-transition-duration: 0.1s;
+    -moz-transition-duration: 0.1s;
+    -o-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    border-color: #648e42;
+  }
+
+  .dijitSelectError,
+  .dijitSelectError .dijitButtonContents,
+  .dijitTextBoxError,
+  .dijitTextBoxError .dijitButtonNode {
+    border-color: #9e000e;
+    background-color: #fefac4;
+  }
+
+}
+
+
+
+.mobile{
+  .pmtAcctMiniApp {
+    width: 276px;
+  }
+
+  .pmtAcctMiniApp .fieldLabel {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+  }
+
+  .pmtAcctMiniApp .fieldLabelText {
+    float: left;
+  }
+
+  .pmtAcctMiniApp .fieldLabelHelp {
+    float: left;
+    font-size: 12px;
+    margin-top: 2px;
+    margin-left: 4px;
+  }
+
+  .pmtAcctMiniApp .fieldInput .input {
+    margin-right: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+
+  .pmtAcctMiniApp .fieldInput .dijitTextBox[role="presentation"] .dijitInputField input {
+    padding: 3px 0 3px 4px;
+  }
+
+
+
+  .pmtAcctMiniApp .firstNameInput {
+    width: 125px;
+  }
+
+  .pmtAcctMiniApp .lastNameInput {
+    width: 163px;
+  }
+
+  .pmtAcctMiniApp .cardNumberInput {
+    width: 136px;
+  }
+
+  .pmtAcctMiniApp .cardNumberInput.input {
+    margin-right: 138px;
+  }
+
+  .pmtAcctMiniApp .cardImg {
+    margin-bottom: 6px;
+  }
+
+  .pmtAcctMiniApp .securityCodeHelp {
+    margin-top: 6px;
+  }
+
+  .pmtAcctMiniApp .fieldInput .dijitValidationContainer {
+    display: none;
+  }
+
+  .pmtAcctMiniApp .fieldInputError {
+    color: #9e0b0f;
+    margin: 0 6px 15px 0px;
+    padding-right: 4px;
+    font-size: 12px;
+  }
+
+  .pmtAcctMiniApp .fieldLabelTextError {
+    color: #9e000e;
+    font-weight: 700;
+  }
+}
+
+
+.mobile.claro {
+  .dijitTextBoxHover {
+    background-color: #ffffff;
+    border-color: #b5bcc7;
+    transition-duration: 0;
+    background-image: none;
+  }
+  .dijitSelectError,
+  .dijitSelectError .dijitButtonContents,
+  .dijitTextBoxError,
+  .dijitTextBoxError .dijitButtonNode {
+    border-color: #930b0f;
+    background-color: #fdd8d9;
+  }
+}

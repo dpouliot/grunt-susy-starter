@@ -1,0 +1,60 @@
+.btn {
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  line-height: 3em; /* Geico buttons need this */
+  font-weight: bold;
+  padding: 0 20px;
+  color: #60574a;
+  border: none;
+  text-transform: uppercase;
+  text-shadow: none;
+  box-shadow: none;
+  background-color: #f2f0ec;
+  background-image: none;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+.btn-sml {
+  line-height: 2.2;
+}
+
+.btn-lrg {
+  line-height: 3.6;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #f5f3f0;
+  background-image: none;
+}
+.btn:active {
+  background-color: #efece7;
+  background-image: none;
+}
+
+.btn .icon-arrow-right,
+.btn .icon-arrow-left {
+  display: none;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #ff8800;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #ffa003;
+  background-image: none;
+}
+.btn-primary:active {
+  background-color: #ff7400;
+  background-image: none;
+}
+
+@media (max-width: 25em){
+.form-submit .btn-lrg {
+  line-height: 2.9em;
+}
+}

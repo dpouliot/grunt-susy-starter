@@ -1,0 +1,330 @@
+/* -------------------------
+   Forms - Credit Card
+------------------------- */
+
+
+//OVERRIDE RESET, CLARO ETC
+
+$fieldMaxWidth: 20em;
+$fieldMaxWidth2: 22em;
+$fieldBorderRadius: 3px;
+
+html, body { margin: 0 auto;}
+
+input:not([type=radio]).dijitInputInner,
+.dijitSelect
+{
+  font: 16px/1.3 $fontNormal; /* 16px = magic font size number to prevent iOS text zoom */
+  display: inline-block;
+  padding: .5em !important;
+  vertical-align: top;
+  margin-top: 2px;
+  border-radius: $fieldBorderRadius;
+  border: 1px solid $borderColorDark;
+  height: 40px;
+
+  @include placeholder {
+    font-weight: normal;
+    color: $textColorInactive;
+  }
+}
+
+
+.dijitTextBox,
+.dijitTextBox .dijitButtonNode,
+.dijitSelect .dijitButtonContents{
+  border: none;
+}
+
+
+.pmtAcctMiniApp,
+.pmtAcctMiniApp
+.input,
+.dijitSelect,
+.dijitTooltip {font: 1em/1.3 $fontNormal;}
+
+.dijitTextBox {border:none}
+.dijitInputInner{border: solid 1px $borderColorDark !important;}
+.dijitInputInner:focus{border: solid 1px $libertyBlue !important;}
+
+.pmtAcctMiniApp .input {margin-right: 0;}
+
+.pmtAcctMiniApp .dijitArrowButtonContainer,
+.pmtAcctMiniApp .cardNumberInput,
+.pmtAcctMiniApp .securityCodeInput,
+.pmtAcctMiniApp .expirationYearInput,
+.pmtAcctMiniApp .expirationMonthInput {
+  width: auto;
+}
+
+.pmtAcctMiniApp .fieldInputError {
+  height: auto;
+}
+
+.pmtAcctMiniApp .fieldLabelText {
+  margin-top: 0;
+}
+
+.dijitInputInner{background-color:white !important}
+
+
+.dijitSelect .dijitArrowButton,
+.dijitSelect .dijitArrowButtonContainer {
+  border: none;
+  background: none;
+}
+
+.dijitSelect .dijitArrowButtonInner
+{
+  width: 100%;
+}
+
+.dijitReset.dijitInputField{padding:3px}
+
+.dijitSelectLabel,
+.dijitValidationTextBox .dijitValidationContainer {
+  padding: 0;
+}
+
+.dijitTextBox {//making dijitSelect transparent removes default styling on iOS
+  background-color: transparent;
+}
+
+.dijitSelect input.dijitInputField,
+.dijitTextBox input.dijitInputField{
+  padding: .5em !important;
+}
+/*
+.dijitReset.dijitInputField{
+  padding: 0 !important;
+}*/
+
+.dijitSelect td {
+  line-height: normal;
+}
+
+.dijitSelect .dijitArrowButtonInner,
+.dijitComboBox .dijitArrowButtonInner {
+  margin: auto;
+}
+
+
+
+.dijitInputContainer {
+  overflow: auto;
+}
+
+.securityCodeInput input.dijitInputInner {
+  width: 4.5em !important;
+}
+
+input.dijitReset.dijitInputField.dijitArrowButtonInner {
+  height: 40px !important;
+}
+
+//HOVER
+.dijitHover .dijitReset,
+.dijitHover.dijitReset{
+  background:none;
+}
+
+.dijitTextBoxHover{
+  background:white;
+}
+
+
+.dijitHover .dijitReset.dijitInputInner{
+  background-color:white !important;
+}
+
+.dijitSelectHover{
+  background:none !important;
+}
+
+//FIELD VERTICAL ALIGNMENT
+.fieldInput {
+  padding: 0 0 0 3px;
+}
+
+.pmtAcctMiniApp .errorAboveInput .fieldLabel {
+  margin-top: 9px;
+}
+
+//INVALIDS
+
+.fieldInputError {
+  display: block;
+  font-size: $size12;
+  margin: 0 0 .5em;
+  color: $libertyRedDark;
+  font-weight: bold;
+  padding-left:3px;
+}
+
+
+
+.dijitError {
+  .dijitInputInner,
+   input:not([type=radio]),
+   textarea,
+   .check-radio-set,
+   .checkbox {
+    border-left: 4px solid $libertyRed !important;
+  }
+}
+
+
+.dijitSelectError{
+  border-left: 4px solid $libertyRed !important;
+}
+
+
+.paymentAccountSection div.field {
+  margin-bottom: 5px;
+}
+
+  //END OVERRIDES
+
+
+
+  //temporarily hidden -- what are these used for?
+.dijitReset .dijitValidationContainer {
+  display: none;
+}
+
+.firstNameInput {
+  float: left;
+  width: 100%;
+  padding-right: 3.3em;
+}
+.middleInitialInput {
+  float: right;
+  margin-left: -2.75em;
+}
+.lastNameInput {
+  clear: both;
+  padding-top: $verticalSpace/2;
+}
+
+.cardNumberInput + img,
+.cardNumberInput + img + img,
+.cardNumberInput + img + img + img,
+.cardNumberInput + img + img + img + img {
+  max-width: 40px;
+  margin: 7px 5px 0 0;
+  max-height: 24px;
+}
+
+/* limit widths: */
+.middleInitialInput input { width: 2.75em; }
+.securityCodeInput input { width: 4.5em; }
+
+.pmtAcctMiniApp {
+  padding-top: 4px;
+}
+.pmtAcctMiniApp #widget_firstName {
+  max-width: 35%;
+  padding-right: 3px;
+}
+.pmtAcctMiniApp #widget_middleInitial {
+  float: left;
+  width: 15%;
+  margin-left: 0;
+  padding-right: 3px;
+}
+.pmtAcctMiniApp #middleInitial {
+  width: 100%;
+}
+.pmtAcctMiniApp #widget_lastName {
+  float: left;
+  clear: none;
+  width: 50%;
+  padding-top: 0;
+}
+@media (min-width: 600px) {
+  .pmtAcctMiniApp #widget_cardNumber {
+    max-width: 70%;
+    float: left;
+    margin-right: 10px;
+  }
+}
+#expirationMonth,
+#expirationYear {
+  position: relative;
+  float: left;
+  margin-right: 8px;
+  max-width: 45%;
+}
+#expirationMonth .dijitSelectLabel,
+#expirationYear .dijitSelectLabel {
+  position: absolute;
+  z-index: 1;
+  left: .7em;
+  top: 0;
+  line-height: 40px;
+}
+#expirationMonth .dijitButtonText:after,
+#expirationYear .dijitButtonText:after {
+  content: " ";
+  border-left: 1px solid #BBBDBF;
+  position: absolute;
+  top: 0;
+  height: 40px;
+  right: 40px;
+  z-index: 1;
+}
+#expirationMonth .dijitDownArrowButton,
+#expirationYear .dijitDownArrowButton {
+  position: relative;
+}
+#expirationYear .dijitDownArrowButton:before,
+#expirationYear .dijitDownArrowButton:after,
+#expirationMonth .dijitDownArrowButton:before,
+#expirationMonth .dijitDownArrowButton:after {
+  content: "\25BC";
+  color: #fff;
+  position: absolute;
+  top: 8px;
+  right: 13px;
+  transform: scaleY(0.6);
+}
+#expirationYear .dijitDownArrowButton:before,
+#expirationMonth .dijitDownArrowButton:before {
+  color: #000;
+  top: 11px;
+}
+#expirationYear .dijitArrowButtonInner,
+#expirationMonth .dijitArrowButtonInner {
+  color: transparent;
+}
+
+#widget_securityCode + div,
+#widget_securityCode + div + div {
+  font-size: 11px;
+  color: $textColorLight;
+  height: 21px;
+  line-height: 21px;
+  margin: $verticalSpace/2 0;
+}
+#widget_securityCode + div img,
+#widget_securityCode + div + div img {
+  float: left;
+  margin: 0 .7em 0 0;
+}
+
+.pmtAcctMiniApp [disabled] {
+  opacity: .4;
+}
+
+@media (min-width: 30.3125em) {
+  #widget_securityCode {
+    float: left;
+    margin-right: -80px;
+  }
+  #widget_securityCode + div,
+  #widget_securityCode + div + div {
+    float: left;
+    padding-left: 90px;
+  }
+}
+

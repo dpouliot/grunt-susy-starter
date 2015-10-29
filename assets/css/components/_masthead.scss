@@ -1,0 +1,133 @@
+/* -------------------------
+	 Masthead
+------------------------- */
+
+.header,
+.masthead {
+	position: relative;
+	z-index: 12;
+}
+.header {
+	border-bottom: 1px solid $borderColor;
+	@include custom-shadow;
+}
+.masthead .logo {
+	width: 45%;
+	min-width: 144px; /* From LM Brand Standards: Minimum size for web width = 144 pixels */
+	max-width: 230px;
+}
+.masthead .logo a {
+	display: block;
+}
+.masthead .logo img {
+	width: 100%; 
+}
+.masthead .help .more {
+	@include a11y-only;
+}
+.masthead .icon-help-center {
+	width: 30px;
+	padding-top: 22px;
+	position: absolute;
+	right: 0;
+	top: 50%; // vertically centered
+	margin-top: -17px;	
+	overflow: hidden;
+	background-size: 100%;
+	text-transform: uppercase;
+	font-size: $size11;
+	font-weight: bold;
+	text-align: center;
+}
+
+.masthead-nav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.masthead-nav li {
+	display: inline-block;
+	color: $textColorInactive;
+	font-size: $size12;
+	line-height: 1.5;
+	padding: 0 0 .5em;
+	margin: 0 .75em 0 0;
+}
+
+.masthead-nav li:after {
+	background-size: cover;
+	content: "\0020";
+	display: inline-block;
+	width: 5px;
+	height: 9px;
+	margin-left: .75em;
+}
+
+.masthead-nav li:last-child {
+	margin-right: 0;
+}
+.masthead-nav li:last-child:after {
+	content: none;
+	background-image: none;
+	margin-left: 0;
+}
+.masthead-nav li.active,
+.masthead-nav li.complete,
+.masthead-nav li.active .more,
+.masthead-nav li.complete .more {
+	font-weight: bold;
+}
+.masthead-nav li.complete {
+	color: $textColorLight;
+}
+.masthead-nav li.active {
+	color: $textColor;
+}
+.masthead-nav .more {
+	@include a11y-only;
+}
+
+@media ( min-width: 25em ) {
+	.masthead-nav .more {
+		@include un-a11y-only;
+		font-weight: normal;
+	}
+	.masthead .icon-help-center {
+		width: 35px;
+		padding-top: 25px;
+		margin-top: -20px;
+	}
+}
+
+@media ( min-width: 32em ) {
+	.masthead-nav li,
+	.masthead .icon-help-center {
+		font-size: $size14;
+	}
+	.masthead-nav li.active {
+		@include custom-bold;
+	}
+	.masthead .help .more {
+		@include un-a11y-only;
+	}
+	.masthead .icon-help-center {
+		width: auto;
+		background-size: 35px;
+		background-position: right center;
+		padding-top: 0;
+		text-transform: none;
+		padding-right: 45px;
+		text-align: right;
+		font-weight: normal;
+		height: 2.5em;
+		line-height: 2.5;
+		white-space: nowrap;
+	}
+}
+
+@media ( min-width: 37.5em ) {	
+ .masthead .icon-help-center {
+		font-size: $size16;
+	}
+}
+

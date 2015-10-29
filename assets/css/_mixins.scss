@@ -1,0 +1,330 @@
+$fontNormal: Arial, Helvetica, sans-serif;
+
+@mixin fontBlack {
+	font-family: 'Arial Black', 'Arial', sans-serif;
+	letter-spacing: -.04em;
+	font-weight: bold;
+}
+
+$size10: 0.625em;
+$size11: 0.6875em;
+$size12: 0.75em;
+$size13: 0.8125em;
+$size14: 0.875em;
+$size15: 0.9375em;
+$size16: 1em;
+$size17: 1.0625em;
+$size18: 1.125em;
+$size19: 1.1875em;
+$size20: 1.25em;
+$size21: 1.3125em;
+$size22: 1.375em;
+$size24: 1.5em;
+$size25: 1.5625em;
+$size26: 1.625em;
+$size28: 1.75em;
+$size32: 2em;
+
+$textColor: #222;
+$textColorLight: #6e6e6e;
+$textColorInactive: #929497;
+
+$headingColor: #404040;
+
+$linkColor: #1b75bb;
+$linkColorHover: #2a94db;
+
+$borderColorDark: #bbbdbf;
+$borderColor: #ccc;
+$borderColorLight: #e6e7e8;
+
+$fillColorLight: #a6a8ab;
+$fillColorLightest: #f1f1f2;
+$fillColorLightBlue: #f1f5f8;
+
+$corpBlue: #002663;
+$corpGrey: #616265;
+
+$libertyRedDark: #a8241d;
+$libertyRed: #C9282D;
+$libertyRedLight: #d75e72;
+
+$libertyOrangeDark: #cc6611;
+$libertyOrange: #D97A23;
+$libertyOrangeLight: #e39b5a;
+
+$libertyYellowDark: #d88b1a;
+$libertyYellow: #ECAC00;
+$libertyYellowLight: #f1c140;
+
+$libertyGreenDark: #477703;
+$libertyGreen: #6C953C;
+$libertyGreenLight: #91b06d;
+
+$libertyTealDark: #40717c;
+$libertyTeal: #569099;
+$libertyTealLight: #60acb3;
+
+$libertyBlueDark: #396791;
+$libertyBlue: #5381AC;
+$libertyBlueLight: #7ea1c1;
+
+$contentFill: #fbfbfb;
+
+/* Width & spacing variables normalize margins */
+$pageMaxWidth: 57.5em; /* 920px */
+$verticalSpace: 20px;
+
+
+//Replaces Compass
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+  -moz-box-sizing: $box-model; // Firefox <= 19
+  box-sizing: $box-model;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+  -webkit-box-shadow:$top $left $blur $color #{$inset};
+  -moz-box-shadow:$top $left $blur $color #{$inset};
+  box-shadow:$top $left $blur $color #{$inset};
+}
+
+@mixin round-icon {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	border-radius: 35px;
+	background-size: 65%;
+	background-position: center center;
+	text-align: center;
+}
+
+@mixin custom-shadow {
+	position: relative;
+	&:after {
+		display: block;
+		content: " ";
+		position: absolute;	
+		z-index: 999;
+		left: 0;
+		bottom: -4px;
+		width: 100%;	
+		height: 3px;
+		opacity: .5;
+		background-image: -webkit-radial-gradient(ellipse closest-side, #ddd, #ddd, #ddd, rgba(255, 255, 255, 0)); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+		background-image: radial-gradient(ellipse closest-side, #ddd, #ddd, #ddd, rgba(255, 255, 255, 0)); /* Chrome 26, Firefox 16+, IE 10+, Opera */
+		background-size: 100% 250%;
+		background-position: center;		
+	}
+}
+
+/* Use custom bold on text 14px or larger */
+@mixin custom-bold {
+	font-weight: bold;
+	letter-spacing: -.03em;
+}
+@mixin un-custom-bold {
+	font-weight: normal;
+	letter-spacing: normal;
+}
+
+@mixin placeholder {
+	&::-webkit-input-placeholder {@content}
+	&:-moz-placeholder           {@content}
+	&::-moz-placeholder          {@content}
+	&:-ms-input-placeholder      {@content}
+}
+
+@mixin focus {
+	outline: none;
+	@include box-shadow(0, 0, 0, 3px, #CCD8E5);
+}
+
+@mixin change-warning {
+	border-left: 5px solid $libertyYellow;
+	padding-left: 9px !important;
+}
+
+/* Hide content in an accessible way */
+@mixin a11y-only {
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+}
+@mixin un-a11y-only {
+	position: static !important;
+	height: auto;
+	width: auto;
+	overflow: visible;
+	clip: auto;
+}
+
+/* Animations - apply as sass includes to classes in the markup */
+@mixin anim-reveal-content {
+  padding-top: 0;
+  padding-bottom: 0;
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	-webkit-transform: translateY(-100%);
+	transform: translateY(-100%);
+  -webkit-transition: -webkit-transform .2s ease-out, opacity .2s, max-height .1s;
+  transition: transform .2s ease-out, opacity .2s, max-height .1s;
+  -webkit-transition-delay: .15s, 0s, .15s;
+  transition-delay: .15s, 0s, .15s;
+}
+@mixin anim-reveal {
+	opacity: 1;
+	overflow: hidden;
+	max-height: 500em; // an absurdly high number to ensure that content will fulfill its height
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+  -webkit-transition: -webkit-transform .2s ease-out, opacity .25s, max-height .1s;
+  transition: transform .2s ease-out, opacity .2s, max-height .1s;
+  -webkit-transition-delay: 0s, .15s, 0s;
+  transition-delay: 0s, .15s, 0s;
+}
+@mixin anim-slide-left-content {
+	right: -110%;
+	-webkit-transform: translateX(110%);
+	-ms-transform: translateX(110%);
+	transform: translateX(110%);
+	-webkit-transition: -webkit-transform .2s ease-out;
+	-ms-transition: -webkit-transform .2s ease-out;
+	transition: transform .2s ease-out;
+}
+@mixin anim-slide-left {
+	right: 0;
+	-webkit-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transition: -webkit-transform .2s ease-out;
+	-ms-transition: -webkit-transform .2s ease-out;
+	transition: transform .2s ease-out;
+}
+
+/* page transitions */
+@mixin anim-fade-out {
+	opacity: 0;
+	-webkit-transition: opacity .5s .2s;
+	transition: opacity .5s .2s;
+}
+.anim-fade-out {
+	@include anim-fade-out;
+}
+@mixin anim-fade-in {
+	opacity: 1;
+	-webkit-transition: opacity .2s .2s; // changed duration from .5 to .2 to sync better with anim-reveal, github issue #823
+	transition: opacity .2s .2s;
+}
+.anim-fade-in {
+	@include anim-fade-in;
+}
+
+
+/* SASS extend usage:
+.selector {
+	@extend %clearfix;
+} */
+
+%clearfix {
+	// For modern browsers
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+	// For IE 6/7 (trigger hasLayout)
+	& {
+		*zoom: 1;
+	}
+}
+
+%description-text { // used in feedback and feature modules
+	display: inline-block;
+	color: $textColorLight;
+	font-size: $size12;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 90%;	
+	line-height: 1;
+}
+
+/* Shared collapsible styles */
+$collapsible-indent: 20px;
+
+%collapsible-item {
+	border-bottom: 1px dotted $borderColor;
+}
+%collapsible-item-title, 
+%collapsible-item-content {
+	padding: 0 10px 0 $collapsible-indent;
+	@extend %clearfix;
+}
+%collapsible-item-header {
+	display: block;	
+	margin: 0;
+	position: relative;
+	z-index: 11;
+	font-size: $size16;
+	background: #fff;
+	outline: none;
+	@extend %clearfix;
+}
+%collapsible-icon {
+	display: block;
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	left: 3px;
+	top: .7em;
+	background-size: 56%;
+	background-position: left center;
+}
+%collapsible-item-title {
+	display: block;
+	@include custom-bold;
+	font-size: $size15;
+	color: $linkColor;
+	position: relative;
+	padding-top: .7em;
+	padding-bottom: .7em;
+	line-height: 1.2;
+	cursor: pointer;
+}
+@mixin collapsible-item-title-lrg {
+	font-size: $size16;
+}
+%collapsible-item-content {
+	display: block;
+	clear: both;
+	outline: none;
+}
+/* for collapsibles auto-expanded at larger breakpoints: */
+@mixin uncollapse {
+	.collapsible-header {
+		pointer-events: none;
+		padding-left: 0;
+		color: $headingColor;
+	}
+	.collapsible-header .icon {
+		display: none;
+	}
+	.collapsible-content {
+		max-height: none;
+		padding: 0;
+		transition: none;
+		overflow: visible;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+		clear: none;
+	}
+}

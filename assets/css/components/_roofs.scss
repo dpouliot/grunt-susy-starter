@@ -1,0 +1,48 @@
+/* -------------------------
+   Home Styles
+------------------------- */
+
+$roof-sprites: sprite-map("sprite/roof/1x/*.png");
+$roof-sprites-2x: sprite-map("sprite/roof/2x/*.png");
+
+@mixin roof-sprite($sprite) {
+	background-image: sprite-url($roof-sprites);
+	background-position: sprite-position($roof-sprites, $sprite);
+	background-repeat: no-repeat;
+	overflow: hidden;
+
+	@media (-webkit-min-device-pixel-ratio: 2),
+	(-o-min-device-pixel-ratio: 3/2),
+	(min--moz-device-pixel-ratio: 2),
+	(min-device-pixel-ratio: 2),
+	(min-resolution: 144dppx) {
+		background-image: sprite-url($roof-sprites-2x);
+		background-size: (image-width(sprite-path($roof-sprites-2x)) / 2) (image-height(sprite-path($roof-sprites-2x)) / 2);
+		background-position: round(nth(sprite-position($roof-sprites-2x, $sprite), 1) / 2) round(nth(sprite-position($roof-sprites-2x, $sprite), 2) / 2);
+	}
+}
+
+.roof-material {
+	.placeholder { @include roof-sprite(placeholder); }
+  .built-up-tar-and-gravel { @include roof-sprite(built-up-tar-and-gravel); }
+  .hail-proof-impact-resistant { @include roof-sprite(hail-proof-impact-resistant); }
+  .rubber { @include roof-sprite(rubber); }
+  .shingles-architectural { @include roof-sprite(shingles-architectural); }
+  .shingles-asphalt-fiberglass { @include roof-sprite(shingles-asphalt-fiberglass); }
+  .shingles-wood-shakes { @include roof-sprite(shingles-wood-shakes); }
+  .slate { @include roof-sprite(slate); }
+  .steel { @include roof-sprite(steel); }
+  .tile-clay { @include roof-sprite(tile-clay); }
+  .tile-concrete { @include roof-sprite(tile-concrete); }
+  .tile-mission { @include roof-sprite(tile-mission); }
+  .tin { @include roof-sprite(tin); }
+	img {
+		width: 40px;
+		height: 34px;
+	}
+
+	.mini-thumbnail img {
+		width: 20px;
+		height: 16px;
+	}
+}

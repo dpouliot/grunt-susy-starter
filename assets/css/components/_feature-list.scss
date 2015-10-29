@@ -1,0 +1,125 @@
+/* -------------------------
+   Feature lists: Discounts & Features on QPS
+------------------------- */
+
+.feature-list {
+	background-color: #fff;
+}
+.feature-item {
+	padding: 0 10px;
+	border: 1px solid $borderColorLight;
+	margin-top: -1px; /* offset border when stacked */
+	@extend %clearfix;
+}
+.feature-item-content .feature-item {
+	margin: 0;
+	border: 0;
+	padding-left: 0;
+	border-top: 1px dotted $borderColorLight;
+}
+
+.feature-item-header {
+	@extend %collapsible-item-header;
+}
+.feature-item-title {
+	@extend %collapsible-item-title;
+}
+.feature-item-content .feature-item-title {
+	font-size: $size14;
+}
+.feature-item-content .feature-item-title,
+.collapsible-expand-all.feature-item-content .collapsible-collapsed .feature-item-title {
+	padding-bottom: 0;
+	margin-bottom: .3em;
+}
+.feature-item-content .collapsible-collapsed .feature-item-title {
+	margin-bottom: .7em;
+}
+.feature-item-title,
+.feature-item-content {
+	outline: none;
+}
+.feature-item-content {
+	@extend %collapsible-item-content;
+}
+
+.feature-item-desc {
+	display: none;
+}
+.collapsible-collapsed .feature-item-desc {
+	display: block;
+	@extend %description-text;
+	margin: -.5em 0 .9em $collapsible-indent;
+}
+
+.feature-item-action {
+	text-align: right;
+	font-size: $size12;
+	position: absolute;
+	right: 10px;
+	top: 1em;
+	z-index: 12;
+}
+.collapsible-collapsed .feature-item-action {
+	display: none;
+}
+
+.feature-item-content p {
+	font-size: $size13;
+	margin: 0 0 .8em;
+}
+
+@media ( min-width: 30em ){
+	/* uncollapse features and hide 'expand all' link */
+	.feature-item-content .feature-item.collapsible,
+	.feature-item-content .feature-item.collapsible-collapsed {
+		@include uncollapse;
+	}
+	.feature-item-content .feature-item-title,
+	.feature-item-content .collapsible-collapsed .feature-item-title {
+		padding-bottom: 0;
+		margin-bottom: .3em;
+	}
+	.feature-item-action {
+		display: none;
+	}
+}
+
+@media ( min-width: 32em ) { /* 512 */
+	.feature-item-title {
+		@include collapsible-item-title-lrg;
+	}
+}
+
+@media ( min-width: 37.5em ){
+	.feature-list > .feature-item > .feature-item-header .feature-item-title {
+		padding-right: 65%;
+		z-index: 9;
+	}
+	.feature-list > .feature-item > .feature-item-header .feature-item-desc {
+		position: absolute;
+		top: 1.3em;
+		left: 35%;
+		z-index: 7;
+		max-width: 55%;
+		margin: 0;
+	}
+
+	.feature-item-content .feature-item-header {
+		float: left;
+		width: 30%;
+	}
+	.feature-item-content .feature-item-content {
+		float: right;
+		width: 68%;
+		margin: .7em 0;
+	}
+	.feature-item-content p {
+		font-size: $size12;
+		margin: 0 0 .5em;
+	}
+	.feature-item-content .feature-item-title,
+	.feature-item-content .collapsible-collapsed .feature-item-title {
+		margin-bottom: .7em;
+	}
+}

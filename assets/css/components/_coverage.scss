@@ -1,0 +1,346 @@
+/* -------------------------
+   Coverage module
+------------------------- */
+
+.coverages {
+	border-top: 1px solid $borderColor;
+}
+.coverages .resource-add {
+	float: none;
+}
+
+.coverage-resource {
+	display: block;
+	@include custom-bold;
+	text-transform: uppercase;
+}
+.coverage-disclaimer {
+	font-size: $size12;
+	color: $textColorLight;
+}
+.coverage-disclaimer p {
+	max-width: none;
+}
+
+/* Coverage info */
+.coverage-item {
+	@extend %collapsible-item;
+}
+.coverage-item p {
+	color: $textColorLight;
+}
+.coverage-item-header {
+	@extend %collapsible-item-header;
+	background-color: $contentFill;
+}
+.coverage-item-header .qps-coverage {
+	display: block;
+	padding-left: $collapsible-indent;
+	padding-bottom: .5em;
+	margin-top: -.7em;
+}
+.coverage-item-header .qps-cov-disclaimer {
+	display: block;
+	margin: .1em 0 0;
+	line-height: 1.4;
+}
+.coverage-item-title {
+	@extend %collapsible-item-title;
+	background-color: transparent;
+}
+.coverage-item-title sup {
+	font-size: .6em;
+}
+.coverage-item-desc {
+	padding: 0 0 .5em;
+}
+.coverage-item-desc p {
+	font-size: $size13;
+	margin: 0 0 1em;
+}
+.collapsible .coverage-item-content {
+	@extend %collapsible-item-content;
+	min-height: 3.7em;
+
+	&:before,
+	&:after {
+		content: "";
+		display: none;
+	}
+}
+.collapsible-collapsed .coverage-item-content {
+	min-height: 0;
+	padding-bottom: 0;
+}
+.coverage-edit {
+	margin: .5em 0;
+	-webkit-transition: opacity .3s;
+	transition: opacity .3s;
+	z-index: 99;
+}
+.qps-recalc .coverage-edit {
+	visibility: hidden;
+}
+.qps-recalc .coverage-edit:after{
+	visibility: visible;
+	content: "re-calculating";
+}
+.collapsible-collapsed .coverage-edit {
+	opacity: 0;
+	position: absolute;
+	left: -999px;
+}
+
+/* Secondary coverage items */
+.coverage-sub-related .coverage-item-title {
+	font-size: $size13;
+}
+/* calculated coverages */
+.coverage-sub-calculated {
+	padding: 0 0 .7em 1.4em;
+	margin-top: -.5em; // offset collapsible header bottom padding
+	position: relative;
+	z-index: 99;
+}
+.coverage-sub-calculated .coverage-item-title {
+	padding: 0;
+	margin: 0;
+	font-size: .9em;
+	color: $headingColor;
+}
+.coverage-sub-calculated .coverage-item-header .qps-coverage {
+	margin-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+}
+.coverage-sub-calculated p {
+	font-size: $size13;
+}
+.coverage-sub-calculated > p:first-child {
+	margin-top: 0;
+}
+.coverage-sub-calculated .qps-cov-amt b {
+	font-weight: normal;
+	font-size: 1em;
+}
+.cov-calc-item {
+	clear: both;
+	margin: .3em 0 .5em;
+}
+.cov-calc-item:last-child {
+	margin-bottom: 0;
+}
+.cov-calc-desc {	
+	clear: both;
+	margin: 0 0 1em;
+}
+.collapsible-collapsed .cov-calc-desc {
+	display: none;
+}
+
+
+/* Data points */
+.qps-cov-amt {
+	font-size: $size12;
+	color: $textColorLight;
+	margin: .3em 0;
+}
+
+//allow .qps-cov-amt to be in a div that wraps paragraphs
+.qps-cov-amt p{
+  font-size: inherit;
+}
+
+.qps-cov-amt p:first-child{
+  margin-top:0;
+}
+
+
+.qps-cov-amt.not-included {
+	margin: .6em 0 0;
+}
+.qps-cov-amt b,
+.qps-cov-amt strong {
+	color: $textColor;
+	font-size: 1.16em; // 14/12
+}
+.qps-cov-amt.removed {
+	text-decoration: line-through;
+}
+.qps-cov-amt.removed b {
+	color: $textColorLight;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+
+/* Edit coverage */
+.edit-coverage {
+	position: relative; 
+	z-index: 5;
+}
+.edit-coverage .form-question {
+	margin: 1.5em 0 0;
+	padding: 0;
+	border: 0;
+}
+.edit-coverage .check-radio .field {
+	float: none;
+	width: auto;
+}
+.edit-coverage .check-radio-set {
+	max-width: none;
+	position: relative;
+	z-index: 3;
+	background-color: $contentFill;
+}
+.edit-coverage .radio {
+	padding: 1em 0;
+	border-top: 1px dotted $borderColor;
+	margin: 0;
+	max-width: none;
+	min-height: 65px;
+}
+/* in columns at bigpoints */
+.edit-coverage .group .radio {
+	min-height: 0;
+	border: 0;
+	padding-top: 0;
+}
+.edit-coverage .group .radio:last-child {
+	margin: 0;
+}
+.edit-coverage .check-radio-set .field-mssg {
+	display: block;
+	margin-left: 2em;
+}
+.edit-coverage .check-radio-set .field-mssg p {
+	font-size: $size11;
+}
+
+/* conditionally show update */
+.edit-coverage + .form-submit {
+	overflow: hidden;
+	position: relative;
+	z-index: 2;
+}
+.edit-coverage + .form-submit .btn-primary {
+	@include anim-fade-in;
+}
+
+
+/* Related coverage - appears when user edits coverage that impacts other line items */
+.related-coverage,
+.related-coverage .coverages,
+.related-coverage .coverage-item-header {
+	background-color: #fff;
+}
+.related-coverage.disclosure {
+	padding: 0 1em;
+	border: 1px solid $borderColor;
+	overflow: visible;
+}
+.related-coverage .coverage-item-title .icon {
+	top: .8em;
+}
+.related-coverage .section-intro {
+	margin: .7em 0 1.5em;
+	max-width: none;
+}
+.related-coverage .coverage-item:last-child {
+	border: 0;
+	margin-bottom: .5em;
+}
+
+@media ( min-width: 25em ) {
+	.coverage-sub-related .coverage-item-header, 
+	.coverage-sub-related .coverage-item-content {
+		margin-left: 1.2em;
+	}
+	.coverage-sub-related .coverage-item-title {
+		font-size: $size15;
+	}
+
+	.coverage-item-title {
+		float: left;
+		width: 100%;
+	}
+	.coverage-item-title,
+	.collapsible .coverage-item-content {
+		padding-right: 165px; // prop open for values and button
+	}
+	.coverage-item-header .qps-coverage {
+		float: right;
+		width: 150px;
+		margin-left: -150px;
+		margin-top: .4em;
+		height: 1em;
+		overflow: visible;
+		padding-left: 0;
+	}
+	.related-coverage .coverage-item-header .coverage-item-title {
+		padding-right: 1.25em;
+		width: 55%;
+	}
+	.related-coverage .coverage-item-header .qps-coverage {
+		width: 45%;
+		height: auto;
+	}
+	.related-coverage .coverage-item-header + .coverage-item-content {
+		padding-right: 1.25em;
+	}
+	.collapsible-collapsed .coverage-item-header .qps-coverage {
+		height: auto;
+	}
+
+	.coverage-sub-calculated .coverage-item-title {
+		float: left;
+		width: 45%;
+	}
+	.coverage-sub-calculated .coverage-item-header .qps-coverage {
+		margin: 0;
+		padding: 0;
+	}
+	.cov-calc-desc {
+		margin-top: .4em;
+	}
+
+	.cov-calc-item .qps-cov-amt {
+		margin: 0;
+	}
+
+	.related-coverage.disclosure {
+		padding: 1em 2em;
+	}
+}
+
+@media ( min-width: 32em ) { // 512
+	.coverage-item-title {
+		@include collapsible-item-title-lrg;
+		vertical-align: bottom;
+	}
+}
+
+@media ( min-width: 37.5em ) { // 600
+	.related-coverage .coverage-item-header .coverage-item-title {
+		width: 70%;
+	}
+	.related-coverage .coverage-item-header .qps-coverage {
+		width: 30%;
+	}
+}
+
+@media ( min-width: 42.5em ) { // 680
+	.edit-coverage .radio .opt {
+		font-size: $size16;
+	}	
+	.edit-coverage .radio .opt .val,
+	.edit-coverage .checkbox .opt .val {
+		font-size: $size12;
+	}
+}
+
+
+
+
+

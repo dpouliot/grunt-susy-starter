@@ -1,0 +1,83 @@
+/* -------------------------
+   Feedback module
+------------------------- */
+
+.feedback-title {
+  clear: both;//Renters summary, to clear floated FAQ and Affinity
+}
+.feedback-title.pg-subtitle {
+	margin-top: .5em;
+}
+.feedback-title .icon {
+	width: 28px;
+	height: 28px;
+  background-size: 100%;
+	margin-right: 7px;
+	vertical-align: middle;
+}
+
+.feedback {
+	border-top: 1px dotted $borderColor;
+	margin: 0 0 .5em;
+}
+.feedback-item {
+	position: relative;
+	border-bottom: 1px dotted $borderColor;
+	padding: .7em 0 .5em;
+}
+.feedback-item .count {
+	background: rgba(27, 117, 187, .7); 
+	margin-top: -.2em;
+	margin-left: .4em;
+}
+
+.feedback-edit {
+	position: absolute;
+	top: .8em;
+	right: 0;
+	z-index: 12;
+	font-size: $size14;
+	@include custom-bold;
+}
+.feedback-item-title,
+.feedback-item-desc {
+	margin: 0;
+}
+.feedback-item-title {
+	display: block;
+	@include custom-bold;
+	font-size: $size15;	
+	line-height: 1.2;
+}
+.feedback-item-desc {
+	@extend %description-text;
+	padding: .5em 0 0;
+}
+
+/* Active ("you are here") & future feedback modules */
+.feedback-active .feedback-item-title {
+	color: $libertyYellow;
+}
+.feedback-disabled .feedback-item-title {
+	color: $textColorInactive;
+}
+
+@media ( min-width: 32em ) { /* 512 */
+	.feedback-item-title {
+		@include collapsible-item-title-lrg;
+	}
+}
+
+@media ( min-width: 37.5em ){
+	.feedback-item-title {
+		padding-right: 65%;
+		z-index: 9;
+	}
+	.feedback-item-desc {
+		position: absolute;
+		top: .8em;
+		left: 35%;
+		z-index: 7;
+		max-width: 55%;
+	}
+}

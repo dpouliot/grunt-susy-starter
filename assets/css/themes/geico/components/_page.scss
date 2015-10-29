@@ -1,0 +1,54 @@
+/* -------------------------
+   Outer Page Containers
+------------------------- */
+$sideSpace: 30px; // mobile left/right
+$sideSpace2: 50px; // intermediate width margin
+$sideSpace3: 80px; // max page width margin
+$sideSpace4: 130px; // max page width padding
+
+  .page {
+    max-width: 100%;
+    border-top: none;
+  }
+
+  .masthead,
+  .content,
+  .footer {
+    max-width: $pageMaxWidth;
+    margin: 0 auto;
+  }
+
+  .content {
+    background-color: white;
+  }
+
+
+@media ( min-width: 30em ) { /* 480px*/
+
+  #help-center{
+    padding-left: $sideSpace;
+    padding-right: $sideSpace;
+  }
+}
+
+@media ( min-width: 37.5em ) {
+  #help-center{
+    padding-left: $sideSpace2;
+    padding-right: $sideSpace2;
+  }
+}
+
+@media ( min-width: 50em ) {
+  #help-center{
+    padding-left: $sideSpace3;
+    padding-right: $sideSpace3;
+  }
+
+}
+
+@media ( min-width: $pageMaxWidth ) {
+  #help-center{
+    padding-left: $sideSpace4;
+    padding-right: $sideSpace4;
+  }
+}

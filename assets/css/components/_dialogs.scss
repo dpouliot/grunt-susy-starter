@@ -1,0 +1,193 @@
+/* -------------------------
+   Dialogs & loading/wait messages
+------------------------- */
+
+.dialog,
+.loading-container .loading-mssg {
+	width: 100%;
+	max-width: 290px;
+	border: 1px solid $borderColor;
+	box-shadow: -2px 2px 0 rgba(170, 170, 170, .2);
+	outline: none;
+	background: #fff;
+}
+.dialog.dialog-wide {
+	max-width: 480px;
+}
+.dialog.loading-mssg {
+	max-width: 360px;
+}
+
+.dialog-header,
+.dialog-body {
+	padding: 25px 32px 20px 25px;
+}
+.dialog-header {
+	padding-bottom: 0;
+	overflow: hidden;
+}
+.dialog-header select {
+	padding: .4em;
+	font-size: $size13;
+	height: 2em;
+	margin-right: 5%;
+	width: 45%;
+	float: left;
+}
+.dialog-header select:last-child {
+	margin-right: 0;
+}
+.dialog-title {
+	font-size: $size16;
+	@include custom-bold;
+	margin: 0;
+}
+
+.dialog-body p,
+.dialog-body li {
+	font-size: $size15;
+}
+.dialog-body p,
+.dialog-body ul {
+	margin: 0 0 .8em;
+}
+.dialog-body li {
+	margin: 0 0 .5em;
+}
+
+.dialog-body .smlprint {
+  color: $textColorLight;
+  font-size: $size12;
+}
+
+
+.dialog-close {
+	display: block;
+	width: 18px;
+	height: 18px;
+	text-indent: -999em;
+	overflow: hidden;
+	background-size: 100%;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+/* Loading/wait messaging */
+.loading-container {
+	position: absolute;
+	top: 200px;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+.loading-container .loading-mssg {
+	width: 90%;
+	max-width: 360px;
+	margin: 0 auto;
+}
+.single-price .loading-mssg {
+	margin: -15px;
+	margin-right: -10px;
+}
+.loading-mssg-spinner,
+.loading-mssg-text {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 10px 15px;
+}
+.loading-mssg-spinner {
+	width: 12%;
+}
+.loading-mssg-spinner img {
+	width: 100%;
+	vertical-align: middle;
+	min-width: 28px;
+	max-width: 50px;
+}
+.loading-mssg-text,
+.loading-container .loading-mssg-text {
+	padding-left: 0;
+}
+.loading-mssg-title {
+	@include custom-bold;
+	font-size: $size14;
+}
+.loading-mssg-title,
+.loading-mssg-text p {
+	margin: 0 0 .2em;
+}
+.loading-mssg-text p {
+	color: $textColorLight;
+	font-size: $size13;
+	font-weight: bold;
+}
+.loading-mssg-text p:last-child {
+	margin: 0;
+}
+
+@media ( min-width: 25em ) {
+	.loading-mssg-title,
+	.loading-mssg-text p {
+		@include custom-bold;
+		font-size: $size16;
+	}
+	.loading-mssg-text {
+		padding-left: 20px;
+	}
+}
+
+@media ( min-width: 37.5em ) {
+	.loading-mssg-title,
+	.loading-mssg-text p {
+		font-size: $size18;
+	}
+}
+
+/*
+ * Simple Dialog
+ * https://github.com/filamentgroup/dialog
+ *
+ * Copyright (c) 2013 Filament Group, Inc.
+ * Licensed under the MIT, GPL licenses.
+ */
+.dialog-content,
+.dialog-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: none;
+}
+.dialog-background {
+	background: #aaa;
+	filter: alpha(opacity=40);
+	background-color: rgba(0,0,0,.4);
+	z-index: 99999;
+	height: 100%;
+	bottom: 0;
+}
+.dialog-content {
+	z-index: 100000;
+}
+
+/* IE8+ issue with centering dialog
+ * https://github.com/filamentgroup/dialog/issues/6
+ * requires Respond.JS for IE8
+*/
+/* @media (min-width: 30em) {
+	.dialog-content {
+		width: 30em;
+	}
+} */
+.dialog-open,
+.dialog-background-open {
+	display: block;
+}
+.dialog-background-trans {
+	background: transparent;
+}
+.dialog-content {
+  margin: 4em auto 1em;
+}
+

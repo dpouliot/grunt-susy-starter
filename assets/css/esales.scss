@@ -1,0 +1,382 @@
+@charset "utf-8";
+//@import "compass/css3";
+@import "mixins";
+
+* {
+	@include box-sizing( border-box );
+	font-weight: normal; // prevent weird letter spacing effect
+}
+
+body {
+	font: 1em/1.3 $fontNormal;	
+	color: $textColor;
+	margin: 0 auto;
+	max-width: 50em; /* this just keeps line length reasonable in non-media-query browsers */
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+	-webkit-text-size-adjust: 100%; /* prevent iOS from adjusting text size, but allow for zooming */
+}
+
+@media only all {
+	body {
+		max-width: none; 
+	}
+}
+
+/* Links */
+a {
+	color: $linkColor;
+	text-decoration: none;
+	outline: none;
+  -webkit-transition: color .5s;
+  transition: color .5s;
+}
+a:hover,
+a:focus {
+	color: $linkColorHover;
+
+}
+
+
+/* Text */
+p, li {
+	font-size: $size14;
+	max-width: 36.25em; /* set max line length, just in case */
+}
+.view-all {
+	font-size: $size13;
+}
+.view-all a {
+	font-weight: bold;
+}
+
+@media ( min-width: 48em ) {
+	p, li {
+		font-size: $size15;
+	}
+}
+
+b, strong {
+	font-weight: bold;
+}
+
+/* pipes between data values */
+.pipe {
+	display: inline;
+	font-weight: normal;
+	font-size: normal;
+	color: $borderColorLight;
+	margin: 0 8px;
+}
+
+
+
+/* fluid images */
+img {
+	/* prevent IE from setting attributes on src swap */
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	border: 0;
+}
+
+/* this class is used for elements that are in the markup purely for audible/accessibility purposes, and are always hidden */
+.a11y-only {
+	@include a11y-only;
+}
+
+/* Page headings */
+.pg-title {
+	@include custom-bold;
+}
+.pg-title,
+.pg-subtitle {
+	color: $headingColor;
+}
+.content-header, /* pg header can contain one or more titles */
+.pg-title {
+	font-size: $size25;
+	margin: 0 0 $verticalSpace/2;
+}
+.pg-subtitle {
+	font-size: $size18;
+	margin: $verticalSpace+10 0 $verticalSpace*.75;
+}
+.pg-subtitle .icon-arrow-left {
+	width: 7px;
+	height: 13px;
+	margin-right: 0.3em;
+}
+.content-header .pg-title {
+	font-size: 1em;
+	margin: 0;
+}
+.content-header .pg-subtitle {
+	font-size: .52em; /* 13/25 */
+	margin: 0 0 .3em;
+}
+.content-header .pg-wayfinder {
+	font-size: .44em; /* 11/25 */
+	margin: 0 0 .3em;
+}
+.pg-wayfinder {
+	font-weight: normal;
+	color: $textColorInactive;
+}
+.pg-wayfinder span {
+	padding-right: .5em;
+}
+.pg-wayfinder span:last-child {
+	padding-right: 0;
+}
+
+.pg-wayfinder span:after {
+	background-size: cover;
+	content: "\0020";
+	display: inline-block;
+	width: 5px;
+	height: 8px;
+	margin-left: .75em;
+}
+.pg-wayfinder span:last-child:after {
+	content: none;
+}
+
+.pg-wayfinder .active,
+.pg-wayfinder .complete {
+	font-weight: bold;
+}
+.pg-wayfinder .complete {
+	color: $textColorLight;
+}
+.pg-wayfinder .active {
+	color: $textColor;
+}
+
+/* Section headers have icons (auto, home, etc) */
+.section-header {
+	position: relative;
+	padding-left: 46px;
+}
+.section-header .icon {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: $libertyBlue;
+	@include round-icon;
+}
+
+/* exceptions for specific icons */
+.section-header .icon[class*="icon-renters"] {
+  background-size: 50%;
+}
+
+/* Page-level messaging */
+.pg-mssg {
+	margin: 10px 0;
+	color: $headingColor;
+}
+.pg-mssg p {
+	margin: 0 {bottom:.8em};
+	font-size: $size16;
+	line-height: 1.2;
+}
+.pg-mssg b,
+.pg-mssg strong {
+	@include custom-bold;
+}
+.pg-mssg[class*="icon-"] {
+	display: table;
+	padding-left: 50px;
+	min-height: 36px;
+	background-size: 36px;
+	background-position: left top;
+}
+.pg-mssg[class*="icon-"] p {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+}
+.pg-mssg-info b,
+.pg-mssg-info strong { color: $corpBlue; }
+
+.pg-mssg-positive b,
+.pg-mssg-positive strong
+{ color: $libertyGreenDark; }
+
+//payment "no fees!"
+.pg-mssg-positive b,
+.pg-mssg-positive strong
+{ color: $libertyGreenDark; }
+
+//payment "no fees!"
+.opt > .pg-mssg-positive b:before {
+  content:"- ";
+  color: #222;
+  font-weight: normal;
+}
+
+.pg-mssg-warning b,
+.pg-mssg-warning strong { color: $libertyYellowDark; }
+
+.pg-mssg-error b,
+.pg-mssg-error strong { color: $libertyRedDark; }
+
+.pg-mssg[class*="separator"] {
+  margin: 0;
+  padding: $verticalSpace*1.5 0 $verticalSpace;
+  border-top: 1px dotted $borderColor;
+}
+
+@media ( min-width: 48em ) {
+	.pg-mssg p {
+		font-size: $size17;
+	}
+}
+
+
+.count {
+	background: $fillColorLight;
+	font-weight: bold;
+	color: #fff;
+	font-size: $size13;	
+	padding: 0 .5em;
+	height: 19px;
+	line-height: 20px;
+	border-radius: 1em;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+.pg-title .count {
+	margin-left: .5em;
+	position: absolute;
+}
+.section-intro,
+p.section-intro {
+	font-size: $size16;
+}
+
+.thumbnail-link {
+	font-size: $size13;
+}
+.thumbnail-link .thumbnail {
+	vertical-align: top;
+	margin: 0 .5em .5em 0;
+}
+.thumbnail-link .thumbnail-text {
+	display: inline-block;
+}
+.thumbnail-link .thumbnail-text span {
+	color: $textColorLight;
+	display: block;
+}
+
+.content .more{
+  white-space: nowrap;
+}
+
+/* legalese within body content, e.g. 'by clicking you agree...' */
+.content .legal {
+  font-size: .8em;
+  color: $textColorLight;
+  margin-top: 1.5em;
+}
+
+.content .legal p {
+  max-width: none;
+}
+
+
+
+@media ( min-width: 25em ) {
+	.section-header {
+		padding-left: 56px;
+	}
+	.section-header .icon {
+		width: 44px;
+		height: 44px;
+		border-radius: 44px;
+		line-height: 44px;
+	}
+}
+
+@media ( min-width: 34em ) {
+	.content-header, 
+	.pg-title {
+		font-size: $size28;
+	}
+	.pg-subtitle {
+		font-size: $size20;
+	}
+	.content-header .pg-subtitle {
+		font-size: .53571428em; /* 15/28 */
+	}
+	.content-header .pg-wayfinder {
+		font-size: .428571428571em; /* 12/28 */
+	}
+
+	.section-header {
+		padding-left: 62px;
+	}
+	.section-header .icon {
+		width: 47px;
+		height: 47px;
+		border-radius: 47px;
+		line-height: 47px;
+	}
+}
+
+@media ( min-width: 48em ) {
+	.content-header, 
+	.pg-title {
+		font-size: $size32;
+	}
+	.content-header .pg-subtitle {
+		font-size: .46875em; /* 15/32 */
+	}
+	.content-header .pg-wayfinder {
+		font-size: .375em; /* 12/32 */
+	}
+
+	.section-header {
+		padding-left: 67px;
+	}
+	.section-header .icon {
+		width: 52px;
+		height: 52px;
+		border-radius: 52px;
+		line-height: 52px; /* vertically centers icon */
+	}
+}
+
+@import "components";
+@import "lib/politespace";
+@import "lib/menu";
+
+.politespace-proxy {
+	overflow: visible;
+}
+.politespace-proxy > .field {
+	position: static;
+	display: block;
+}
+.politespace-proxy > :first-child {
+	height: 40px;
+	// overwrite JS positioning and sizing
+	line-height: 40px !important;
+	top: 0 !important;
+}
+
+
+@media ( max-width: 37.5em ) {
+  [itemprop="telephone"] { color: $linkColor; }
+  [itemprop="telephone"]:hover { color: $linkColorHover; }
+}
+
+@media print {
+  #help-center .panel-content{
+	display: none;
+  }
+}

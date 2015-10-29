@@ -1,0 +1,198 @@
+#help-center {display: none;}
+#help-center.panel-open {display:block;}
+
+.help-center {
+	position: relative;
+
+	/* hide the contact sales corner overflow */
+	overflow-x: hidden;
+}
+.help-center-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	height: 30px;
+	width: 28px;
+	text-indent: -999px;
+	overflow: hidden;
+	background-size: 14px;
+	background-position: center;
+}
+.help-center-title {
+	font-weight: 400;
+	font-size: 1.625em; /* 26px */
+	margin: 0;
+	color: $corpBlue;
+}
+.help-center-group {
+	padding: 16px;
+	border-bottom: 1px dotted $borderColor;
+}
+.help-center-close + .help-center-group,
+.help-center-group:last-child {
+	border-bottom: none;
+}
+.help-center-subgroup {
+	padding-bottom: 1em;
+}
+.help-center-group > p {
+	font-weight: 700;
+	font-size: 1em;
+	margin: .2em 0;
+}
+.help-center-group .view-all {
+	font-size: $size13;
+}
+.help-center-group p > a,
+.help-center-group p > span {
+	font-weight: bold;
+}
+.help-center-contact {
+	font-size: .75em;
+	color: #6E6E6E;
+	list-style: none;
+}
+.help-center-contact,
+.help-center-contact > li {
+	margin: 0;
+	padding: 0;
+}
+.help-center-contact > li {
+	padding: .1em 0;
+}
+.help-center-inline-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.help-center-inline-list li {
+	display: inline;
+}
+.help-center-inline-list li:before {
+	content: "| ";
+	color: #d0d0d0;
+	padding: 0 .2em;
+}
+.help-center-inline-list li:first-child:before {
+	content: "";
+	padding: 0;
+}
+.help-center-inline-list li > a {
+	font-weight: 700;
+}
+.help-center .collapsible-group .collapsible-header {
+	background-color: transparent;
+}
+
+
+/* Sales Contact Card */
+.sales-contact {
+	background-color: #fff;
+	border: 1px solid $borderColor;
+	padding: 10px;
+	font-size: 12px;
+	position: relative;
+	margin-bottom: 2.5em; // 30px
+  	ul {
+		list-style: none;
+		margin-top: .7em;
+	  li {
+		display: inline;
+		font-size: 12px;
+	  }
+	  li:before {
+		content: "| ";
+	  }
+	  li:first-child:before {
+		content: "";
+	  }
+	}
+}
+
+
+.help-center-group .sales-contact {
+	margin-bottom: 1.5em; //18px
+}
+.sales-contact-top-corner,
+.sales-contact-bottom-corner {
+	display: block;
+}
+.sales-contact-top-corner:before,
+.sales-contact-bottom-corner:before,
+.sales-contact-top-corner:after,
+.sales-contact-bottom-corner:after {
+	content: " ";
+	position: absolute;
+	z-index: 2;
+}
+.sales-contact-top-corner:before,
+.sales-contact-top-corner:after {
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.sales-contact-bottom-corner:before,
+.sales-contact-bottom-corner:after {
+	-webkit-transform: rotate(-135deg);
+	-ms-transform: rotate(-135deg);
+	transform: rotate(-135deg);
+}
+.sales-contact-top-corner:before,
+.sales-contact-bottom-corner:before {
+	border: 1px solid $borderColor;
+	border-width: 0 1px 0 0;
+	box-shadow: 2px 0 6px 0 rgba(0,0,0,.14);
+	width: 29px;
+	height: 61px;
+}
+.sales-contact-top-corner:before {
+	left: -10px;
+	top: -26px;
+}
+.sales-contact-bottom-corner:before {
+	right: -10px;
+	bottom: -26px;
+}
+.sales-contact-top-corner:after,
+.sales-contact-bottom-corner:after {
+	width: 37px;
+	height: 84px;
+	background: linear-gradient(to left, $fillColorLightest 70%, rgba(255, 255, 255, 0));
+}
+.sales-contact-top-corner:after {
+	left: -18px;
+	top: -39px;
+}
+.sales-contact-bottom-corner:after {
+	right: -18px;
+	bottom: -39px;
+}
+/* End corners */
+
+.sales-contact abbr {
+	border-bottom: none;
+}
+.sales-contact-title {
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	border-bottom: 1px solid $borderColor;
+	padding-bottom: 8px;
+	margin-bottom: 1em; /* 16px */
+}
+.sales-contact-name {
+	font-weight: bold;
+}
+.sales-contact-email {
+	display: block;
+	margin-bottom: 1.333333333em; /* 16px */
+}
+.sales-contact-photo {
+	float: left;
+	margin-right: 8px;
+	width: 70px;
+	padding-bottom: 10px;
+}
+.sales-contact-phone {
+	clear: both;
+}

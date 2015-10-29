@@ -1,0 +1,38 @@
+/* -------------------------
+   Tables
+------------------------- */
+
+.table {
+	width: 100%;
+	font-size: $size13;
+	color: $textColor;
+	border-collapse: collapse;
+}
+.table th {
+	font-weight: bold;
+}
+.table thead th {
+	border-bottom: 1px dotted $borderColor;
+	color: $textColorLight;
+}
+.table tfoot th {
+	margin-top: .5em;
+	border-top: 1px dotted $borderColor;
+}
+.table td,
+.table th {
+	text-align: right;
+	padding: .4em;
+	margin: 0;
+	border: 0;
+}
+.table th:first-child,
+.table td:first-child {
+	text-align: left;
+}
+.table tbody tr {
+	width: 100%;
+}
+.table tbody tr:nth-child(even) td {
+	background: rgba(126, 161, 193, .2);
+}

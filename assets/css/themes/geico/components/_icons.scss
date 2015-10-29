@@ -1,0 +1,28 @@
+
+
+.icon-discount,
+.icon-check,
+.icon-info,
+.icon-warning,
+.icon-error{
+  background: none;
+}
+
+.icon-discount:before,
+.icon-check:before,
+.icon-info:before,
+.icon-warning:before,
+.icon-error:before{
+  color: $corpBlue;
+  font-size: 30px;
+  line-height: 1;
+  font-family: "geico";
+  margin-left:-40px;
+}
+
+
+.icon-discount:before {content: "\e150";}
+.icon-check:before {content: "\e158";}
+.icon-info:before {content: "\e142";}
+.icon-warning:before {content: "\e145";color:#ff744a}
+.icon-error:before {content: "\e142";color:#b6091a}

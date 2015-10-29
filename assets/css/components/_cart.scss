@@ -1,0 +1,240 @@
+/* -------------------------
+   Cart
+------------------------- */
+
+.cart-summary table {
+	width: 100%;
+	border-bottom: 1px dotted $borderColor;
+}
+.cart-summary thead {
+	display: none;
+}
+.cart-summary td {
+	display: block;
+}
+.cart-coverage {
+	border-top: 1px dotted $borderColor;
+	padding: 1em 0 .5em;
+}
+.cart-coverage .icon {
+	width: 25px;
+	height: 25px;
+	background-size: 100%;
+	float: left;
+	margin-right: .5em;
+	background-position: center;
+}
+.cart-coverage .resource-title {
+	font-size: $size20;
+	margin: 0 0 .2em;
+}
+.cart-coverage .resource-desc {
+	padding: 0;
+	font-size: $size12;
+}
+.cart-cost .qps-opt-price b {
+	font-size: 1.6666667em; /* 20px */
+	line-height: 1.2;
+}
+.cart-cost .qps-cov-amt {
+	margin-top: 0;
+}
+.cart-actions {
+	text-align: left;
+	padding: .3em 0 1em;
+}
+.cart-actions .resource-edit + .resource-delete {
+	padding-left: .5em;
+}
+.cart-actions .resource-delete span {
+	font-weight: normal;
+}
+.cart-actions .btn-primary,
+.cart-actions .qps-opt-due {
+	width: 100%;
+	text-align: center;
+}
+.cart-actions .btn-primary {
+	max-width: 12em;
+	margin: 0 auto;
+}
+.cart-actions .qps-opt-due {
+	font-size: $size16;
+	margin: .7em 0 0;
+}
+
+.cart-summary tfoot td {	
+	vertical-align: top;
+}
+.cart-summary-mssg {
+	border-top: 1px solid $borderColor;
+	padding-top: 1em;
+}
+.cart-summary-mssg p {
+	margin: 0;
+	font-size: $size15;
+	@include custom-bold;
+	color: $libertyGreen;
+}
+.cart-summary-total {
+	padding: 1em 0;
+}
+.cart-summary-total-title {
+	font-size: $size14;
+	@include custom-bold;
+	margin: 0;
+}
+
+/* removed item */
+.cart-summary-removed .cart-actions {
+	float: left;
+	width: 100%;
+}
+.cart-summary-removed .resource-title {
+	color: $textColorLight;
+}
+.cart-summary-removed .cart-add-mssg {
+	font-size: $size14;
+	@include custom-bold;
+	margin: 0 0 .7em;
+	color: $headingColor;
+}
+
+
+@media ( min-width: 19em ) {
+	.cart-coverage,
+	.cart-summary-mssg {
+		float: left;
+		width: 55%;
+	}
+	.cart-cost,
+	.cart-summary-total {
+		border-top: 1px dotted $borderColor;
+		float: right;
+		width: 45%;
+		text-align: right;
+		padding-top: 1em;
+	}
+	.cart-summary-total {
+		border-top: 1px solid $borderColor;
+	}
+	.cart-summary-total-title {
+		width: 100%;
+		text-align: center;
+	}
+	.cart-summary-mssg p {
+		padding-right: 1em;
+	}
+	.cart-actions {
+		clear: both;
+		text-align: right;
+	}
+	.cart-summary tfoot .cart-actions {
+		text-align: center;
+	}
+	.cart-summary-removed .cart-add-mssg {
+		float: left;
+		width: 100%;
+		text-align: left;
+		padding-right: 155px;
+	}
+	.cart-summary-removed .cart-add-mssg + .btn-action-b {
+		float: right;
+		width: 145px;
+		margin-left: -145px;
+	}
+}
+
+@media ( min-width: 22em ) {
+	.cart-coverage .icon {
+		width: 35px;
+		height: 35px;
+		margin-right: -35px;
+	}
+	.cart-coverage .resource-title {
+		margin: 0;
+	}
+	.cart-coverage .resource-title,
+	.cart-coverage .resource-desc {
+		float: left;
+		padding-left: 48px;		
+	}
+	.cart-coverage .resource-desc {
+		margin-top: -.8em;
+	}
+}
+
+@media ( min-width: 25em ) {
+	.cart-summary td {
+		padding-left: $verticalSpace;
+		padding-right: $verticalSpace;
+	}
+	.cart-summary td.cart-cost {
+		padding-left: 0;
+	}
+	.cart-summary td.cart-summary-mssg {
+		padding-right: 0;
+	}
+}
+
+@media ( min-width: 30em ) {
+	.cart-summary td {
+		clear: none;
+		border-top: 1px dotted $borderColor;
+		float: none;
+		width: auto;
+		display: table-cell;
+		padding: .7em 0;
+		vertical-align: middle;
+	}
+	.cart-summary td.cart-coverage {
+		width: 38%;
+	}
+	.cart-coverage .resource-title {
+		font-size: $size20;
+		margin: 0 0 .3em;
+	}
+	.cart-cost,
+	.cart-summary-total,
+	.cart-summary-total-title {
+		text-align: left;		
+	}
+	.cart-summary td.cart-cost,
+	.cart-summary td.cart-summary-total {
+		padding-left: .5em;
+	}
+	.cart-cost .qps-opt-price {
+		margin-top: 0;
+	}
+	.cart-actions {
+		text-align: right;
+	}
+	.cart-actions .btn-primary,
+	.cart-actions .qps-opt-due {
+		float: right;
+		text-align: center;
+		width: 80%;		
+	}
+	.cart-actions .btn-primary {
+		padding-left: .5em;
+		padding-right: .5em;
+	}
+
+	.cart-summary-removed .cart-actions,
+	.cart-summary-removed .cart-add-mssg {
+		float: none;
+	}
+	.cart-summary-removed .cart-add-mssg {
+		width: auto;
+		padding-right: 0;
+		text-align: right;
+	}
+}
+
+@media ( min-width: 37.5em ) {
+	.cart-summary-removed .cart-add-mssg {
+		float: left;
+		margin: .3em 160px 0 0;
+		text-align: left;
+	}
+}

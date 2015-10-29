@@ -1,0 +1,47 @@
+/* -------------------------
+   Customer service module
+------------------------- */
+
+.customer-service {
+	background-color: #fff;
+	border: 1px solid $borderColorLight;
+	position: relative;
+	padding: .5em 1em .5em 28%; /* hold room for image on left */
+	min-height: 65px;
+}
+.feature-list + .customer-service {
+	border-top: 0;
+}
+.customer-service-photo {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 25%;
+	text-align: center; 
+}
+.customer-service-photo img {
+	max-width: 50px;   
+	vertical-align: bottom;
+}
+.customer-service-mssg {
+	padding: .3em 0 0;
+}
+.customer-service-mssg p:first-child {
+	font-size: $size15;
+}
+.customer-service-mssg p {
+	margin: 0;
+	font-size: $size14;
+}
+.customer-service .tel {
+	color: $linkColor;
+}
+
+@media ( min-width: 25em ) { /* 400 */
+	.customer-service-mssg p:first-child {
+		font-size: $size16;
+	}
+	.customer-service-mssg p {
+		font-size: $size15;
+	}
+}

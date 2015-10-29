@@ -1,0 +1,51 @@
+.header {
+  background: $corpBlue;
+  border-bottom: none;
+}
+
+.header:after {
+  content: none;
+}
+
+.masthead-nav {
+  display: none;
+}
+.masthead .icon-help-center {
+  right: 5px;
+}
+
+.masthead .logo {
+  width: 270px;
+  max-width: 335px;
+  display: block;
+  height: 65px;
+  padding: 0px 10px;
+  background-color: white;
+
+}
+.masthead .logo:after {
+  display: block;
+  background-image: url("/assets/img/geico/geico-portfolio-underwritten.png");
+  background-size:100% ;
+  background-repeat: no-repeat;
+  width:245px;
+  height: 65px;
+  position: absolute;
+  content:" ";
+}
+
+.masthead .logo img {
+  display: none;
+}
+
+@media (min-width: 21.250em) {  //340px
+  .masthead .logo {
+    padding: 0px 18px;
+    width: 303px;
+  }
+
+  .masthead .logo:after {
+     width:303px;
+    background-size:262px ;
+  }
+}

@@ -1,0 +1,63 @@
+/* -------------------------
+   Home Styles
+------------------------- */
+
+$home-style-sprites: sprite-map("sprite/home_style/1x/*.png");
+$home-style-sprites-2x: sprite-map("sprite/home_style/2x/*.png");
+
+@mixin home-sprite($sprite) {
+	background-image: sprite-url($home-style-sprites);
+	background-position: sprite-position($home-style-sprites, $sprite);
+	background-repeat: no-repeat;
+	overflow: hidden;
+
+	@media (-webkit-min-device-pixel-ratio: 2),
+	(-o-min-device-pixel-ratio: 3/2),
+	(min--moz-device-pixel-ratio: 2),
+	(min-device-pixel-ratio: 2),
+	(min-resolution: 144dppx) {
+		background-image: sprite-url($home-style-sprites-2x);
+		background-size: (image-width(sprite-path($home-style-sprites-2x)) / 2) (image-height(sprite-path($home-style-sprites-2x)) / 2);
+		background-position: round(nth(sprite-position($home-style-sprites-2x, $sprite), 1) / 2) round(nth(sprite-position($home-style-sprites-2x, $sprite), 2) / 2);
+	}
+}
+
+.home-style {
+  .placeholder { @include home-sprite(placeholder); }
+  .story-1 { @include home-sprite(story-1); }
+  .story-1_5 { @include home-sprite(story-1_5); }
+  .story-2 { @include home-sprite(story-2); }
+  .story-2_5 { @include home-sprite(story-2_5); }
+  .story-3 { @include home-sprite(story-3); }
+  .raised-ranch { @include home-sprite(raised-ranch); }
+  .rambler { @include home-sprite(rambler); }
+  .ranch { @include home-sprite(ranch); }
+  .cape-cod { @include home-sprite(cape-cod); }
+  .colonial { @include home-sprite(colonial); }
+  .federal-colonial { @include home-sprite(federal-colonial); }
+  .contemporary { @include home-sprite(contemporary); }
+  .bi-level { @include home-sprite(bi-level); }
+  .tri-level { @include home-sprite(tri-level); }
+  .mediterranean { @include home-sprite(mediterranean); }
+  .queen-anne { @include home-sprite(queen-anne); }
+  .victorian { @include home-sprite(victorian); }
+  .victorian-ornate { @include home-sprite(victorian-ornate); }
+  .southwest-adobe { @include home-sprite(southwest-adobe); }
+  .cottage { @include home-sprite(cottage); }
+  .bungalow { @include home-sprite(bungalow); }
+  .townhouse-center { @include home-sprite(townhouse-center); }
+  .townhouse-end { @include home-sprite(townhouse-end); }
+  .row-house-center { @include home-sprite(row-house-center); }
+  .row-house-end { @include home-sprite(row-house-end); }
+  .below-grade-home { @include home-sprite(below-grade-home); }
+  .mobile-home { @include home-sprite(mobile-home); }
+	img {
+		width: 40px;
+		height: 34px;
+	}
+
+	.mini-thumbnail img {
+		width: 20px;
+		height: 16px;
+	}
+}

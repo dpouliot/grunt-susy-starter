@@ -1,0 +1,550 @@
+/* -------------------------
+   Bind process
+------------------------- */
+
+
+// Pay frequency
+.form-group.pay-frequency.disclosure{border-top: none }
+
+// monthly, quarterly, yearly, etc
+.form-question.pay-frequency-options {
+  padding: $verticalSpace 0;
+	border-bottom: 1px dotted $borderColor;
+}
+
+.pay-frequency-options .opt i {
+	font-style: normal;
+}
+.pay-frequency-options .opt i:first-child {
+	border-right: 1px solid #aaa;
+	padding-right: 1em;
+	margin-right: 1em;
+	display: inline-block;
+}
+
+.pay-frequency .payment-breakdown {
+	display: block;
+	font-size: $size14;
+	margin: .5em 0;
+}
+
+.pay-frequency iframe {
+	width: 100%;
+	height: 480px;
+	overflow: auto;
+	border: 0;
+	margin: 0 0 0 -3px; // offset padding on inputs for focus shadow
+}
+
+@media (min-width: 35em) {//560
+  .pay-frequency iframe {
+	height: 345px;
+  }
+}
+
+@media (min-width: 43.750em) {//700
+	.pay-frequency iframe {
+	  height: 315px;
+	}
+}
+
+// security graphics
+#security-badges {
+	margin-top: .5em;
+}
+#security-badges a {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 1em;
+}
+#security-badges a:last-child {
+	margin-right: 0;
+}
+#security-badge-verizon {
+	width: 140px;
+}
+#security-badge-verisign {
+	width: 80px;
+}
+
+/* routing graphic */
+#routing-acct img {
+	max-width: 15em;
+}
+
+/* Pay frequency tabs - override animation */
+.pay-frequency.disclosure {
+	display: block;
+}
+.pay-frequency.disclosure.hidden {
+	display: none;
+}
+
+
+/* ----- Review & Confirm ----- */
+
+/* Price change block */
+.price-change {
+	margin-bottom: 2em;
+	position: relative;
+}
+.price-change-title {
+	font-size: $size20;
+	@include custom-bold;
+	margin: 0;
+	line-height: 1.1em;
+}
+.price-change-decrease {
+	color: $libertyGreen;
+}
+.price-change-compare,
+.price-change-compare .qps-opt {
+	margin: 0 0 1em;
+}
+.price-change .qps-opt-due {
+	margin: .2em 0 0;
+}
+.price-adjust {
+	margin: 1.5em 0 0;
+	font-size: $size12;
+}
+.price-adjust a {
+	white-space: nowrap;
+}
+.price-change .collapsible-header {
+	@extend %collapsible-item-header;
+	@extend %collapsible-item-title;
+	font-size: $size14;
+}
+.price-change .collapsible-content {
+	@extend %collapsible-item-content;
+	border-top: 1px dotted $borderColor;
+}
+.price-change .collapsible-content h4,
+.price-change .collapsible-content li,
+.price-change .collapsible-content p {
+	margin: 0;
+	padding: 0 0 .7em;
+	font-size: $size13;
+}
+.price-change .collapsible-content h4 {
+	margin-top: $verticalSpace*.75;
+	font-size: $size14;
+	@include custom-bold;
+}
+.price-change .collapsible-content ul {
+	margin: 0;
+	padding-left: 1em;
+}
+
+// Rate Change 
+.rate-change {
+  position: relative;
+  padding-bottom: 7px;
+}
+
+.rate-change .collapsible {
+  margin-top: -1em;
+}
+
+.rate-change .collapsible-header {
+  @extend %collapsible-item-header;
+  @extend %collapsible-item-title;
+  background: inherit;
+  font-size: $size14;
+}
+.rate-change .collapsible-content {
+  @extend %collapsible-item-content;
+  border-top: 1px dotted $borderColor;
+}
+.rate-change .collapsible-content h4,
+.rate-change .collapsible-content li,
+.rate-change .collapsible-content p {
+  margin: 0;
+  padding: 0 0 .7em;
+  font-size: $size13;
+}
+.rate-change .collapsible-content h4 {
+  margin-top: $verticalSpace*.75;
+  font-size: $size14;
+  @include custom-bold;
+}
+
+.bind-payment .radio .opt{
+  max-width: 89%; /* override behavior set in forms.css that causes undesirable mobile wrapping on how would you like to pay: monthly. scoped to limit unintended consequences */
+}
+
+/* Payment summary & agreement */
+.payment-summary {	
+	border-bottom: 1px solid $borderColor;
+}
+.payment-summary > div {
+	border-top: 1px dotted $borderColor;
+	padding: $verticalSpace*.75 0;
+}
+.payment-summary .qps-opt-price {
+	margin-top: 0;
+}
+.payment-summary-title {
+	font-size: $size16;
+	margin: 0;
+}
+.payment-summary-desc {
+	font-size: $size16;
+	@include custom-bold;
+	margin: .5em 0;
+}
+.payment-summary-fineprint {
+  font-size: $size13;
+  font-weight: bold;
+  margin: -.4em 0 0;
+}
+.payment-summary-more {
+	font-size: $size13;
+  margin: 0;
+}
+.payment-summary p:last-child {
+	margin-bottom: 0;
+}
+.payment-agreement {
+	padding: $verticalSpace*.75 0;
+	border-bottom: 1px dotted $borderColor;
+}
+.payment-agreement p:first-child {
+	margin-top: 0;
+}
+.payment-agreement ul {
+	margin: .5em 0 0;
+}
+.payment-agreement li {
+	font-size: $size14;
+	padding: 0 0 .5em;
+}
+.payment-agreement-submit {
+	text-align: right;
+}
+
+
+/* Policy summary */
+.policy-summary-header {
+	position: relative;
+	border-bottom: 1px solid $borderColor;
+	padding: $verticalSpace/2 0;
+}
+.policy-summary-title {
+	font-size: $size22;
+	margin: 0;
+	max-width: 65%;
+}
+.policy-summary-subtitle {
+	font-size: $size14;
+	@include custom-bold;
+	background-color: $fillColorLightest;
+	margin: 0;
+	padding: .5em $verticalSpace/2;
+}
+.policy-summary-edit {
+	position: absolute;
+	bottom: 1em;
+	right: 0;
+	font-size: $size13;
+	font-weight: bold;
+}
+.policy-coverage-summary {
+	@extend %clearfix;
+	padding: 0 $verticalSpace/2;
+}
+.policy-coverage-summary .resource-header {
+	border-bottom: 1px dotted $borderColor;
+}
+
+.vehicle-coverage-summary .resource-profile + .resource-title {
+	float: none;
+}
+
+/* coverage values */
+.policy-summary .qps-coverage {
+	border-bottom: 1px dotted $borderColor;
+	margin: .5em 0;
+	padding: 0 0 .5em;
+	@extend %clearfix;
+}
+.policy-summary .qps-coverage:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+.policy-summary .qps-cov-title {
+	color: $headingColor;
+	font-size: $size14;
+	margin: .2em 0;
+}
+
+/* coverage resources (see list-builder.scss for base resource styles) */
+.policy-summary .resource {
+	border: 0;
+	@extend %clearfix;
+}
+.policy-summary .resource:last-child,
+.policy-summary .resource-header {
+	margin: 0;
+}
+.policy-summary .resource-header {
+	overflow: visible;
+	margin: 0 0 -1px; /* prevent double borders */
+	@extend %clearfix;
+}
+.policy-summary .resource:first-child .resource-header {
+	border-top: 0;
+}
+
+.policy-total {
+	border-top: 1px solid $borderColor;
+	padding: $verticalSpace*.75 0 0;
+	@extend %clearfix;
+}
+.policy-total-title,
+.policy-total-amt {
+	font-size: $size14;
+	margin: 0;
+}
+.policy-total-title {
+	float: left;
+	text-transform: uppercase;
+}
+.policy-total-amt {
+	float: right;
+	@include custom-bold;
+}
+
+.policy-details,
+.policy-detail-grid {
+	padding-bottom: .5em;
+}
+.policy-details .qps-coverage {
+	padding: .3em 0;
+}
+
+.policy-summary,
+.payment-agreement,
+.confirm-create-acct {
+	margin: 0 0 1.5em;
+}
+.confirm-create-acct p:first-child {
+	margin-top: 1em;
+	padding-top: 1em;
+	border-top: 1px dotted $borderColor;
+}
+
+.confirm-policy-summary {
+	@extend %clearfix;
+}
+
+.policy-actions {
+	float: right;
+  /*max-width: 25%;*/
+  	margin: .5em 0 0;
+}
+
+
+.policy-actions a {
+	font-size: $size15;
+	@include custom-bold;
+}
+
+.policy-actions a:first-child{
+	margin-right: 1em;
+}
+
+.policy-actions p {
+	margin: .4em 0;
+}
+.policy-actions .icon {
+	width: 27px;
+	height: 23px;
+	background-position: left center;
+	vertical-align: middle;
+	margin-top: -4px;
+  margin-right: 3px; /* instead of white space to separate the icon from the text*/
+}
+
+
+/* mixins for policy detail grid */
+@mixin grid-border {
+	border-left: 1px dotted $borderColor;
+}
+@mixin no-grid-border {
+	border-left: 0;
+}
+
+@media (min-width: 25em) {
+	.price-change-compare {
+		display: table;
+		width: 100%;
+	}
+	.price-change-compare .qps-opt {
+		display: table-cell;
+		padding-left: 1em;
+		border-left: 1px solid $borderColor;
+		margin: 0;
+	}
+	.price-change-compare .qps-opt:first-child {
+		padding-left: 0;
+		border-left: 0;
+		padding-right: 1em;
+	}
+
+	.policy-detail-grid {
+		padding-bottom: 0;
+	}
+
+	/* grid: 50:50 */
+	.policy-detail-grid .qps-coverage {
+		padding: 0 .5em;
+		border-bottom: 0;		
+		float: left;
+		width: 50%;
+		text-align: center;
+		min-height: 4em;
+	}
+	.policy-detail-grid .qps-coverage:nth-child(even) {
+		@include grid-border;
+	}
+	.policy-detail-grid .qps-coverage:nth-child(2n+3) {
+		clear: left;
+	}
+
+	.policy-details {
+		padding: .3em 0;
+	}
+	.policy-details .qps-coverage {
+		padding: 0;
+		border: 0;
+		margin: .3em 0;
+	}
+	.policy-details .qps-cov-title {
+		float: left;
+		width: 45%;
+		max-width: 12em;
+	}
+	.policy-details .qps-cov-amt {
+		float: left;
+		width: 55%;
+		padding-left: 5%;
+		margin: .2em 0;
+	}
+}
+
+@media (min-width: 37.5em){
+	.pay-frequency .opt {
+		position: relative;
+		width: 60%;
+	}
+	.pay-frequency .payment-breakdown {
+		position: absolute;
+		left: 30%;
+		top: 0;
+		margin: 0;
+		width: 100%;
+	}
+	.pay-frequency .payment-breakdown {
+		display: block;
+	}
+
+	/* grid: 33:33:33 */
+	.policy-detail-grid .qps-coverage:nth-child(n) {
+		clear: none;
+		@include grid-border;
+	}
+	.policy-detail-grid .qps-coverage {
+		width: 33.333333%;
+
+	}
+	.policy-detail-grid .qps-coverage:nth-child(3n+1) {
+		clear: left;
+		@include no-grid-border;
+	}
+
+	.driver-coverage-summary .resource-title {
+		float: left;
+		width: 200px;
+		margin-right: -200px;
+	}
+	.driver-coverage-summary .resource-desc {
+		clear: none;
+		width: 100%;
+		padding-top: 0;
+		padding-left: 210px;
+		margin-right: 0;		
+	}
+
+	.price-change {
+		min-height: 125px;
+		padding-bottom: 12px;
+	}
+	.price-change-title,
+	.price-change .collapsible-header {
+		padding-right: 68%;
+	}
+	.price-change-title {
+		min-height: 58px;
+		margin: .4em 0 0;
+	}
+	.price-change-content {
+		position: absolute;
+		z-index: 99;
+		top: 10px;
+		right: 15px;
+		width: 62%;
+	}
+	.price-change-compare + .price-adjust {
+		margin: 1em 0 0;
+	}
+}
+
+@media (min-width: 43em) {
+	.vehicle-coverage-summary .resource {
+		border-top: 1px dotted $borderColor;
+	}
+	.vehicle-coverage-summary .resource:first-child {
+		border-top: 0;
+	}
+	.vehicle-coverage-summary .resource-header {
+		float: left;
+		width: 38%;
+		border: 0;
+	}
+	.vehicle-coverage-summary .resource-coverage {
+		float: right;
+		width: 60%;
+	}
+/*
+	.confirm-policy-summary .policy-details {
+		float: left;
+		width: 70%;
+	}
+	*/
+}
+
+@media ( min-width: 44em ) {
+	.price-change-title {
+		min-height: 64px;
+	}
+	.payment-summary .qps-opt-price b,
+	.price-change-compare .qps-opt-price b {
+		font-size: 2.4em; /* 36/15 */
+	}
+	.payment-summary .qps-opt-price sup,
+	.price-change-compare .qps-opt-price sup {
+		font-size: 22px; /* 22/15 */
+	  line-height: 40px;
+	}
+}
+
+@media ( min-width: 48.5em ) {
+	.price-change-title {
+		min-height: 68px;
+	}
+	.price-change-compare .qps-opt-price b {
+		font-size: 2.666667em; /* 40/15 */
+	}
+}

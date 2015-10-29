@@ -1,0 +1,67 @@
+$fieldBorderRadius: 4px;
+
+  input:not([type=radio]),
+  select,
+  textarea,
+  .read-only {
+    border-radius: $fieldBorderRadius;
+    border: 3px solid $borderColorDark;
+    color: $darkBeige;
+    -webkit-transition: border-color .5s, background-color .5s;
+    transition: border-color .5s, background-color .5s;
+    padding: 3px;
+    vertical-align: middle;
+    line-height: 1.8;
+  }
+
+  input:hover,
+  select:hover,
+  textarea:hover {
+    -moz-box-shadow:none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+   /* @include focus;*/
+    border-color: $textColorInactive;
+  }
+  input:focus,
+  select:focus,
+  textarea:focus {
+           border-color: $textColorInactive;
+  }
+
+.invalid input:not([type=radio]),
+.invalid select,
+.invalid textarea {
+  border: 4px solid $libertyRedDark;
+}
+
+.invalid .check-radio-set,
+.invalid .checkbox {
+  border-left-color: $libertyRedDark;
+}
+
+.form-wrapper,
+.form-question,
+.form-group {
+    background-color: white;
+}
+
+
+.field-mssg[class*="icon-"]:before {
+  font-size:16px;
+margin-left: -25px;
+  float:left;
+}
+
+.radio .opt-desc .pg-mssg-positive,
+.checkbox .opt-desc .pg-mssg-positive
+{
+  font-size: 1rem;//using ems here (via $size16) causes unintended consequences here due to cascading
+}
+.warning input,
+.warning select,
+.warning textarea,
+.warning .check-radio-set,
+.warning .checkbox {
+  border-left: 4px solid #ff744a;
+}

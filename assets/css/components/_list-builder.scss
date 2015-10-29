@@ -1,0 +1,388 @@
+/* -------------------------
+   List builder for summarizing insurable resources (drivers, vehicles, etc.)
+------------------------- */
+
+@mixin resource-gradient {
+	background-image: -webkit-radial-gradient(ellipse closest-side, #fff, #fff, #fff, rgba(255, 255, 255, 0)); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+	background-image: radial-gradient(ellipse closest-side, #fff, #fff, #fff, rgba(255, 255, 255, 0)); /* Chrome 26, Firefox 16+, IE 10+, Opera */
+	background-size: 100% 250%;
+	background-position: center;
+}
+
+$photoWidthSmall: 70px;
+$photoWidth: 80px;
+
+.resource-list,
+.resources{
+	margin: 0 0 1em;
+}
+.disclosure .resource-list:first-child,
+.disclosure .resources:first-child {
+	margin: -$verticalSpace 0 0;
+}
+.resource {	
+	position: relative;
+}
+.vehicle-list .resource {
+	min-height: 3.5em;
+}
+
+/* Resource headers */
+.resource-header {
+	position: relative;
+	overflow: hidden;
+	@include resource-gradient;
+	padding: .7em 0;
+}
+.resource-header:before {
+	content: "";
+	display: block;
+	float: left;
+	height: 17px; /* emulate min-height: 40px but work with #473 */
+}
+.resource-list .resource-header,
+.resources .resource-header,
+.resource-form, 
+.resource-list-footer,
+.resources-footer{
+	border-top: 1px dotted $borderColor;
+}
+
+.vehicle-details .resource-header + .form-group {//Vehicle Details page
+  padding-top: .7em;
+  border-top: 1px dotted $borderColor;
+}
+
+
+.coverage-header.resource-header {
+	border-top: 1px solid $borderColor;
+	margin-top: 1em;
+}
+
+// edit/remove confirmation
+.resource-edit-confirm {
+	position: absolute;
+	top: 50%;
+	margin-top: -50px;
+	height: 100px;
+	line-height: 100px;
+	padding: 0 .4em 0 .7em;
+	background-color: #fff;
+	min-height: 100px;	
+	z-index: 999;
+	border-left: 1px solid $borderColorLight;
+	box-shadow: -3px 0 0 0 rgba(0,0,0,.03);
+	@include anim-slide-left;
+}
+.resource,
+.resource-header,
+.resource-form {
+	@include anim-reveal;
+}
+
+
+// optional thumbnail
+.resource-profile {
+	float: left;
+	width: $photoWidthSmall;
+	margin-right: -$photoWidthSmall;
+}
+
+.resource-title,
+.resource-desc {	
+	line-height: 1.2;
+}
+.resource-title {
+	font-size: $size17;
+	@include custom-bold;
+	margin: 0; 
+}
+/*
+.vehicle-list .resource-title {
+	text-transform: uppercase;
+}
+*/
+.property-list .resource-title {
+	font-size: $size14;
+}
+
+.resource-profile + .resource-title,
+.resource-desc + .resource-title{ //Vehicle Details page
+	float: left;
+	width: 100%;
+	padding-left: $photoWidthSmall + 10;
+}
+
+.resource-subtitle {
+	display: block;
+	font-size: $size13;
+	font-weight: bold;	
+	color: $textColorInactive;
+	margin: 0 0 .1em;
+}
+
+.resource-desc { // Vehicle Summary page
+	clear: both;
+	padding: .5em 1em 0 0;
+	font-size: $size13;
+	color: $textColorLight;
+}
+
+.resource-profile + .resource-desc {// Vehicle Details page
+  padding: 0 1em .4em 0;
+}
+.resource-profile + .resource-desc p {
+  font-weight: bold;
+}
+
+.resource-desc p {
+	font-size: 1em;
+	width: 100%;
+	overflow: hidden;	
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin: 0 0 .3em;
+}
+.resource-desc p:last-child {
+	margin: 0;
+}
+.resource-desc .no-data {
+	font-style: italic;
+	color: $textColorInactive;
+}
+.resource-desc .section {
+	margin: 0 0 1em;
+}
+.resource-desc .section:last-child {
+	margin: 0;
+}
+
+// Vehicle Details page
+.vehicle-details .resource-header{
+  overflow:auto;
+  margin-bottom:.7em;
+
+}
+
+// Actions: edit, delete, cancel
+.resource-actions {
+	text-align: right;
+}
+.resource-actions a,
+.resource-edit {
+	display: inline-block;
+	font-size: $size14;
+}
+.resource-actions a,
+.resource-actions a span,
+.resource-edit {	
+	@include custom-bold;
+	vertical-align: middle;
+}
+
+
+.resource-delete .icon,
+.resource-cancel .icon {
+	vertical-align: middle;
+	height: 14px;
+	width: 14px;
+	margin-right: 0;
+}
+.resource-delete span,
+.resource-cancel span {
+	margin-right: .3em;
+	vertical-align: middle;
+}
+.resource-list .resource-delete,
+.resources .resource-delete,
+.coverage-header.resource-header .resource-delete {
+	text-align: center;
+}
+.resource-list .resource-delete span,
+.resources .resource-delete span,
+.coverage-header.resource-header .resource-delete span {
+	@include a11y-only;
+}
+.resource-edit + .resource-delete {
+	margin-left: .3em;
+	padding-left: .6em;
+	border-left: 1px solid $borderColor;
+} 
+
+/* Resource states */
+.resource-interview .resource-header,
+.resource-edit-interview .resource-header {
+	border-bottom: 1px solid $borderColor;
+}
+.resource-list.resource-interview .resource-header,
+.resource-list.resource-edit-interview .resource-header,
+.resources.resource-interview .resource-header,
+.resources.resource-edit-interview .resource-header{
+	border-bottom: 0;
+}
+
+.resource-interview .resource-actions,
+.resource-summary .resource-actions,
+.resource-edit-interview .resource-actions,
+.coverage-header.resource-header .resource-actions {
+	clear: right;
+	float: right;
+  margin: 0;
+}
+
+.resource-summary .resource-actions,
+.resource-edit-interview .resource-actions {
+  margin: .4em 0 -.3em;
+}
+.resource-list.resource-interview .resource-title,
+.resources.resource-interview .resource-title{
+	float: left;
+	width: 100%;
+	padding-right: 30px; // hold space for delete btn on right
+}
+.resource-list.resource-interview .resource-actions,
+.resources.resource-interview .resource-actions{
+	float: right;
+	width: 30px;
+	margin-left: -30px;
+}
+
+// In-list form
+.resource-form {
+	border-top: 1px dotted $borderColor;
+	background-color: $contentFill;
+	padding: $verticalSpace*.75 0 $verticalSpace*.25;
+}
+.resource-form .form-question {
+	border-top: 0;
+	padding-top: 0;
+}
+
+/* "Add another..." links */
+.resource-list-footer,
+.resources-footer{
+	padding: 1em 0 .5em;
+	@extend %clearfix;
+}
+.resource-list-footer:empty,
+.resource-list-footer:empty:before,
+.resource-list-footer:empty:after,
+.resources-footer:empty,
+.resources-footer:empty:before,
+.resources-footer:empty:after{
+	display: none;
+}
+.resource-add-title {
+	margin: 0 0 .7em;
+	font-size: $size16;
+	@include custom-bold;
+}
+.resource-add-title + p {
+	margin: -.7em 0 .7em;
+}
+.resource-add {
+	float: left; /* prevent from going full width and creating clickable white space */
+	clear: left; 
+	@include custom-bold;
+	margin: 0 0 .3em;
+}
+.resource-add span {
+	font-size: .9em;
+	white-space: nowrap;
+	color: $textColorLight;
+}
+.resource-add .icon {
+	width: 1em;
+	height: 1em;
+	vertical-align: middle;
+	margin-right: .3em;
+}
+
+@media ( min-width: 22em ) {
+	.resource-summary .resource-title,
+	.resource-interview .resource-title,
+	.coverage-header.resource-header .resource-title {
+		padding-right: 4.25em;
+	}
+	.policy-coverage-summary.resource-summary .resource-title {
+		padding-right: 0;
+	}
+	.resource-summary .resource-actions,
+	.resource-interview .resource-actions,
+	.coverage-header.resource-header .resource-actions {
+		width: 4em;
+		position: absolute;
+	  top: .6em;
+		right: 0;
+		margin: 0;
+	}
+	.resource-summary .resource-delete .icon,
+	.coverage-header.resource-header .resource-delete .icon {
+		vertical-align: top;
+		margin-top: .15em;
+	}
+
+	.vehicle-list .resource-profile,
+	.coverage-header .resource-profile {
+		float: left;
+		margin-top: 0;
+	}
+	.vehicle-list .resource-title {
+		margin-bottom: .3em;
+	}
+	.vehicle-list .resource-desc {
+		clear: none;
+		margin-left: $photoWidthSmall + 10;
+	}
+}
+
+@media ( min-width: 23em ) {
+	.resource-edit-interview .resource-title {
+		padding-right: 7.25em;
+	}
+	.resource-edit-interview .resource-actions {
+		width: 6.875em;
+		position: absolute;
+	  top: .7em;
+		right: 0;
+		margin: 0;
+	}
+}
+
+@media ( min-width: 28em ) {	
+	.resource-profile {
+		width: $photoWidth;
+		margin-right: -$photoWidth;
+	}
+	.resource-profile + .resource-title,
+	.resource-desc + .resource-title{
+		padding-left: $photoWidth + 10;
+	}
+	.vehicle-list .resource-desc {
+		margin-left: $photoWidth + 10;
+	}
+	
+
+	.property-list .resource-title,
+	.property-list .resource-desc {
+		clear: none;
+		float: left;
+	}
+	.property-list .resource-title {
+		width: 35%;
+		padding-right: 1em;
+	}
+	.property-list .resource-desc {
+		margin: 0;
+		padding: 0;
+	}
+	.property-list .mini-thumbnail {
+		margin-top: 0;
+	}
+}
+
+@media (min-width: 48em){
+	.resource-title {
+		font-size: $size18;
+	}
+}

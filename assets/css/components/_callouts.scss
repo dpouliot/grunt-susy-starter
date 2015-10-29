@@ -1,0 +1,48 @@
+/* -------------------------
+   Callouts
+------------------------- */
+
+.callout {
+  background-color: #fff;
+  border: 1px solid $borderColorLight;
+  position: relative;
+  padding: 1em;
+  min-height: 65px;
+  overflow: auto;
+}
+
+.callout-photo {
+  text-align: center;
+}
+
+
+
+.max250 {
+  // optionally add to .callout-photo if needed to restrict logo max sizes
+  max-width: 250px;
+}
+
+@media (min-width: 25em) {// 400
+  .callout-mssg p {
+    font-size: $size15;
+  }
+}
+
+@media (min-width: 35em) {
+  .callout {
+    padding: 1em 1em 1em 1em; /*178px hold room for image on left */
+  }
+  .callout-mssg{
+    margin-left: 178px;// hold room for image on left
+  }
+  .callout-photo {
+    width: 160px;
+    float:left;
+   /*
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    padding: 2em 0 0 1em;*/
+  }
+}

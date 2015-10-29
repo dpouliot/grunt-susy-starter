@@ -1,0 +1,99 @@
+/* -------------------------
+   Outer Page Containers
+------------------------- */
+
+$sideSpace: 30px;
+$sideSpace2: 50px;
+$sideSpace3: 80px;
+$sideSpace4: 130px;
+
+.notification {
+  border-top: solid 1px $borderColor;
+  padding: 0 $sideSpace/2;
+  @include anim-reveal-content;
+}
+
+.notification-active {
+  @include anim-reveal;
+}
+
+.notification-header {
+  position: relative;
+}
+
+.notification-header:before {
+  display: block;
+  content: " ";
+  width: 100%;
+  height: 4px;
+  background-image: -webkit-linear-gradient(to right, $corpBlue, $libertyBlue); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+  background-image: linear-gradient(to right, $corpBlue, $libertyBlue); /* Chrome 26, Firefox 16+, IE 10+, Opera */
+}
+
+.notification-title {
+  color: $corpBlue;
+  font-weight: bold;
+  line-height: 0;
+  margin-top: 2em;
+}
+
+.notification-body {
+  margin-top: -.2em;
+  margin-bottom: 2.7em;
+}
+
+.notification-close {
+  position: absolute;
+  font-size: $size13;
+  right: 15px;
+  bottom: 15px;
+  padding-right: 20px;
+}
+
+.notification-close.icon-x {
+  background-position-x: 100%;
+}
+
+@media (min-width: 30em) {
+  .notification {
+    padding-right: $sideSpace;
+  }
+  .notification-close {
+    right: $sideSpace;
+  }
+}
+
+@media (min-width: 37.5em) {
+  .notification {
+    padding-left: $sideSpace2;
+    padding-right: $sideSpace2;
+  }
+  .notification-body {
+    margin-bottom: 1.5em;
+  }
+  .notification-close {
+    right: $sideSpace2;
+    top: 46%;
+  }
+}
+
+@media (min-width: 50em) {
+  .notification {
+    padding-left: $sideSpace3;
+    padding-right: $sideSpace;
+  }
+  .notification-close {
+    right: $sideSpace;
+  }
+}
+
+@media (min-width: $pageMaxWidth) {
+
+  .notification {
+    padding-left: $sideSpace4;
+    padding-right: $sideSpace3;
+  }
+  .notification-close {
+    right: $sideSpace3;
+  }
+}

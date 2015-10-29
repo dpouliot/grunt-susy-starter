@@ -1,0 +1,49 @@
+/* menu component */
+
+[data-menu] {
+	position: absolute;
+	width: 100%;
+}
+[data-menu][aria-hidden=true] {
+	display: none;
+}
+[data-menu] ol:empty:before {
+	content: "No results.";
+	font-style: italic;
+}
+
+/* Custom styles */
+.autocomplete {
+	display: block;
+	position: relative;
+}
+.menu {
+	background-color: #fff;
+	box-sizing: border-box;
+	border: 1px solid $borderColor;
+	border-radius: $fieldBorderRadius;
+	box-shadow: -2px 2px 0 rgba(170, 170, 170, .2);
+	margin-top: 5px;
+}
+
+.menu ul,
+.menu ol {
+	list-style: none;
+	padding: 5px;
+	margin: 0;
+	max-height: 11em;
+	overflow: auto;
+
+	li {
+		font-size: 1em;
+		max-width: 100%;
+		font-weight: 700;
+		line-height: 140%;
+		padding: .5em .2em;
+	}
+}
+
+.menu-selected {
+	color: #fff;
+	background-color: $libertyBlue;
+}

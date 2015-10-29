@@ -1,33 +1,16 @@
-## Grunt Susy Starter 
+## Grunt Sass Starter 
 
-This is a starter project template that uses LibSass to compile Susy with Grunt. Detailed instructions on how this template is set up is found at [http://www.zell-weekeat.com/grunt-sass-with-susy/](http://www.zell-weekeat.com/grunt-sass-with-susy/)
+This is a starter project template that uses LibSass to compile Sass with Grunt. From [http://www.zell-weekeat.com/grunt-sass-with-susy/](http://www.zell-weekeat.com/grunt-sass-with-susy/)
 
 ## Project Setup  
 
-1. Clone the repo 
+$ `git clone https://github.com/zellwk/grunt-susy-starter.git`
 
-~~~
-git clone https://github.com/zellwk/grunt-susy-starter.git
-~~~
+$ `npm install`
 
-2. Install Node dependencies 
-
-~~~
-$ npm install
-~~~
-
-3. Install Bower dependencies
-
-~~~
-$ bower install
-~~~
 
 ## Usage 
 
 The gruntfile in this project is setup to run `grunt-sass` and `grunt-contrib-watch`. Use the `grunt` command to start the process. 
 
-~~~
-$ grunt
-~~~
-
-That's it!
+$ `grunt`

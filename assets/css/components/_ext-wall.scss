@@ -1,0 +1,54 @@
+/* -------------------------
+   External Wall Materials
+------------------------- */
+
+$home-style-sprites: sprite-map("sprite/ext_wall/1x/*.png");
+$ext-wall-sprites-2x: sprite-map("sprite/ext_wall/2x/*.png");
+
+@mixin wall-sprite($sprite) {
+	background-image: sprite-url($home-style-sprites);
+	background-position: sprite-position($home-style-sprites, $sprite);
+	background-repeat: no-repeat;
+	overflow: hidden;
+
+	@media (-webkit-min-device-pixel-ratio: 2),
+	(-o-min-device-pixel-ratio: 3/2),
+	(min--moz-device-pixel-ratio: 2),
+	(min-device-pixel-ratio: 2),
+	(min-resolution: 144dppx) {
+		background-image: sprite-url($ext-wall-sprites-2x);
+		background-size: (image-width(sprite-path($ext-wall-sprites-2x)) / 2) (image-height(sprite-path($ext-wall-sprites-2x)) / 2);
+		background-position: round(nth(sprite-position($ext-wall-sprites-2x, $sprite), 1) / 2) round(nth(sprite-position($ext-wall-sprites-2x, $sprite), 2) / 2);
+	}
+}
+
+.ext-wall {
+	.adobe { @include wall-sprite(adobe); }
+	.block-painted { @include wall-sprite(block-painted); }
+	.block-painted-decorative { @include wall-sprite(block-painted-decorative); }
+	.block-slump { @include wall-sprite(block-slump); }
+	.brick-block { @include wall-sprite(brick-block); }
+	.brick-solid { @include wall-sprite(brick-solid); }
+	.brick-veneer { @include wall-sprite(brick-veneer); }
+	.logs { @include wall-sprite(logs); }
+	.placeholder { @include wall-sprite(placeholder); }
+	.poured-concrete { @include wall-sprite(poured-concrete); }
+	.siding-aluminum-plastic { @include wall-sprite(siding-aluminum-plastic); }
+	.siding-cement-fiber { @include wall-sprite(siding-cement-fiber); }
+	.stone-block { @include wall-sprite(stone-block); }
+	.stone-solid { @include wall-sprite(stone-solid); }
+	.stone-veneer { @include wall-sprite(stone-veneer); }
+	.stucco-block { @include wall-sprite(stucco-block); }
+	.stucco-synthetic { @include wall-sprite(stucco-synthetic); }
+	.wood { @include wall-sprite(wood); }
+	.wood { @include wall-sprite(wood); }
+	img {
+		width: 40px;
+		height: 34px;
+	}
+
+	.mini-thumbnail img {
+		width: 20px;
+		height: 16px;
+	}
+}
