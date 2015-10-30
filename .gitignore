@@ -5,12 +5,5 @@ profile
 #ignore sass caches
 .sass-cache
 
-#ignore sublime projects
-.sublime-project
-.sublime-workspace
-
-#ignore node_modules
 node_modules
-
-#ignore bower_components
-bower_components
+dist
