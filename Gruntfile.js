@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'assets/css',
-          src: ['*.scss'],
+          src: ['**/*.scss'],
           dest: 'dist/css',
           ext: '.css'
         }]
@@ -31,11 +31,26 @@ module.exports = function(grunt) {
         spawn: false
       }
     },
+
+    sprite:{
+      all: {
+        src: 'assets/img/sprite/**/*x/*.png',
+        dest: 'dist/img/spritesheet.png',
+        destCss: 'dist/css/sprites.css',
+        retinaSrcFilter: ['2x/*.png'],
+        retinaDest: 'dist/img/spritesheet.retina@2x.png',
+      }
+    }
+
+
+
+
   });
 
   // Loads Grunt Tasks
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-spritesmith');
 
   // Default task(s).
   grunt.registerTask('default', ['sass', 'watch']);
